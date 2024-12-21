@@ -90,6 +90,7 @@ private static void processAndStoreCustomerData(String customerFilePath, String 
     
     // Step 6: Store the processed data
     customerManager.storeData(customerData, outputCustomerFilePath);
+    System.out.println("\n");
 }
 
 // Method to process and store order data
@@ -117,6 +118,7 @@ private static void processAndStoreOrderData(String orderFilePath, String output
     
     // Step 6: Store the processed data
     orderManager.storeData(orderData, outputOrderFilePath);
+  
 }
 
 // Method to process and store product data
@@ -144,6 +146,7 @@ private static void processAndStoreProductData(String productFilePath, String ou
     
     // Step 6: Store the processed data
     productManager.storeData(productData, outputProductFilePath);
+    System.out.println("\n");
 }
 
 
