@@ -1,6 +1,7 @@
 Customer_ID,Customer_Name,Email,Phone_Number,City,State,Country,Gender,Age_Group
 CUST_1,Customer_1,customer1@example.com,+919192255096,Mumbai,Rajasthan,India,Female,36-45
 CUST_1,Customer_1,customer1@example.com,+919192255096,Mumbai,Rajasthan,India,Female,36-45
+CUST_01,Customer_1,,+919192255096,Mumbai,Rajasthan,India,Female,36-45
 CUST_2,Customer_2,customer2@example.com,+917409970357,Jaipur,Tamil Nadu,India,Other,46-55
 CUST_3,Customer_3,customer3@example.com,+919809148812,Chennai,Karnataka,India,Other,36-45
 CUST_4,Customer_4,customer4@example.com,+918038555788,Chennai,Maharashtra,India,Male,26-35
