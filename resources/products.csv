@@ -1,5 +1,7 @@
 Product_ID,Product_Name,Category,Subcategory,Brand,Price
 PROD_1,Product_1,Beauty,Camera,BrandB,1345.53
+PROD_1,Product_1,Beauty,Camera,BrandB,1345.53
+PROD_01,,,Camera,BrandB,1345.53
 PROD_2,Product_2,Beauty,Accessories,BrandD,1438.91
 PROD_3,Product_3,Books,Fiction,BrandC,570.9
 PROD_4,Product_4,Beauty,Fiction,BrandC,1101.7

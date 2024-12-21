@@ -161,7 +161,7 @@ private static void processAndStoreProductData(String productFilePath, String ou
             System.out.println("2. Manage Product Data");
             System.out.println("3. Manage Order Data");
             System.out.println("4. Manage All Data");
-            System.out.println("5. Exit");
+            System.out.println("5. Log Out");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume the newline character
