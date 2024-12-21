@@ -2,6 +2,11 @@ package src.main.java.dataprocessingtest;
 
 
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import src.main.java.model.Order;
 
 public class OrderDataProcessor extends DataProcessor<Order> {
@@ -17,7 +22,29 @@ public class OrderDataProcessor extends DataProcessor<Order> {
         }
         return null;  // Return null if the line doesn't match the expected format
     }
+    
+       @Override
+    public boolean isValid(Order order) {
+        // An order is valid if it has non-null and valid fields
+        return order != null &&
+               order.getOrderId() != null && !order.getOrderId().isEmpty() &&
+               order.getCustomerId() != null && !order.getCustomerId().isEmpty() &&
+               order.getProductId() != null && !order.getProductId().isEmpty() &&
+               order.getQuantity() > 0 &&
+               order.getTotalAmount() > 0;
+    }
 
+    // Override removeDuplicates to remove duplicate orders based on the orderId
+    @Override
+    public void removeDuplicates(List<Order> data) {
+        Set<String> uniqueOrderIds = new HashSet<>();
+        List<Order> uniqueData = data.stream()
+                                     .filter(order -> order != null && uniqueOrderIds.add(order.getOrderId()))
+                                     .collect(Collectors.toList());
+        data.clear();  // Clear the original list
+        data.addAll(uniqueData);  // Add the unique orders back to the list
+        System.out.println("Processed " + data.size() + " unique orders.");
+    }
 
     // Convert an Order object to a CSV string
     @Override

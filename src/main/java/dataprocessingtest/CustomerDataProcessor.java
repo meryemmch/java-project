@@ -1,6 +1,11 @@
 package src.main.java.dataprocessingtest;
 
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import src.main.java.model.Customer;
 
 public class CustomerDataProcessor extends DataProcessor<Customer> {
@@ -23,6 +28,26 @@ public class CustomerDataProcessor extends DataProcessor<Customer> {
     return null;  // Return null if the line doesn't match the expected format
 }
 
+        @Override
+    public boolean isValid(Customer customer) {
+        // A valid customer must have a non-null and non-empty customerId, email, and name
+        return customer != null &&
+               customer.getCustomerId() != null && !customer.getCustomerId().isEmpty() &&
+               customer.getEmail() != null && !customer.getEmail().isEmpty() &&
+               customer.getName() != null && !customer.getName().isEmpty();
+    }
+
+    // Override removeDuplicates to remove duplicate customers based on the customerId
+    @Override
+    public void removeDuplicates(List<Customer> data) {
+        Set<String> uniqueIds = new HashSet<>();
+        List<Customer> uniqueData = data.stream()
+                                        .filter(customer -> customer != null && uniqueIds.add(customer.getCustomerId()))
+                                        .collect(Collectors.toList());
+        data.clear();  // Clear the original list
+        data.addAll(uniqueData);  // Add the unique customers back to the list
+        System.out.println("Processed " + data.size() + " unique customers.");
+    }
 
 
     // Convert a Customer object to a CSV string

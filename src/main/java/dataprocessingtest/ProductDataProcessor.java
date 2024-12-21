@@ -1,6 +1,11 @@
 package src.main.java.dataprocessingtest;
 
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
 import src.main.java.model.product;
 
 
@@ -16,7 +21,27 @@ public class ProductDataProcessor extends DataProcessor<product> {
         }
         return null;  // Return null if the line doesn't match the expected format
     }
+    
+      @Override
+    public boolean isValid(product item) {
+        // A product is valid if it has non-null fields and price > 0
+        return item != null &&
+               item.getproductId() != null && !item.getproductId().isEmpty() &&
+               item.getproductName() != null && !item.getproductName().isEmpty() &&
+               item.getprice() > 0;
+    }
 
+    // Override removeDuplicates to remove duplicate products based on productId
+    @Override
+    public void removeDuplicates(List<product> data) {
+        Set<String> uniqueProductIds = new HashSet<>();
+        List<product> uniqueData = data.stream()
+                                      .filter(product -> product != null && uniqueProductIds.add(product.getproductId()))
+                                      .collect(Collectors.toList());
+        data.clear();  // Clear the original list
+        data.addAll(uniqueData);  // Add the unique products back to the list
+        System.out.println("Processed " + data.size() + " unique products.");
+    }
 
     // Convert a product object to a CSV string
     @Override
