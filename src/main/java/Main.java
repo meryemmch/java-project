@@ -65,77 +65,87 @@ public class Main {
     }
 
     // Method to process and store customer data
-    private static void processAndStoreCustomerData(String customerFilePath, String outputCustomerFilePath) {
-        CustomerDataProcessor customerManager = new CustomerDataProcessor();
-        
-        // Step 1: Read the customer data
-        List<Customer> customerData = customerManager.readData(customerFilePath);
-        System.out.println("Data read from file: " + customerData.size() + " customers");
-        
-        // Step 2: Remove duplicates
-        customerManager.removeDuplicates(customerData); // Modify in place
-        System.out.println("After removing duplicates: " + customerData.size() + " customers");
-        
-        // Step 3: Remove rows with missing data
-        customerData = customerManager.removeRowsWithMissingData(customerData); // Returns new list
-        System.out.println("After removing rows with missing data: " + customerData.size() + " customers");
-        
-        // Step 4: Get a random sample (returns a sublist)
-        customerData = customerManager.getRandomSample(customerData, 200); // Make sure the sample is returned
-        System.out.println("After sampling: " + customerData.size() + " customers");
-        
-        // Step 5: Analyze the data
-        customerManager.analyzeData(customerData);
-        
-        // Step 6: Store the processed data
-        customerManager.storeData(customerData, outputCustomerFilePath);
-    }
+     // Method to process and store customer data
+private static void processAndStoreCustomerData(String customerFilePath, String outputCustomerFilePath) {
+    CustomerDataProcessor customerManager = new CustomerDataProcessor();
+    
+    // Step 1: Read the customer data
+    List<Customer> customerData = customerManager.readData(customerFilePath);
+    System.out.println("Data read from file: " + customerData.size() + " customers");
+    
+    // Step 2: Remove duplicates
+    customerManager.removeDuplicates(customerData); // Modify in place
+    System.out.println("After removing duplicates: " + customerData.size() + " customers");
+    
+    // Step 3: Remove rows with missing data
+    customerData = customerManager.removeRowsWithMissingData(customerData); // Returns new list
+    System.out.println("After removing rows with missing data: " + customerData.size() + " customers");
+    
+    // Step 4: Get a random sample (returns a sublist)
+    customerData = customerManager.getRandomSample(customerData, 200); // Make sure the sample is returned
+    System.out.println("After sampling: " + customerData.size() + " customers");
+    
+    // Step 5: Analyze the data
+    customerManager.analyzeData(customerData);
+    
+    // Step 6: Store the processed data
+    customerManager.storeData(customerData, outputCustomerFilePath);
+}
 
-    // Method to process and store order data
-    private static void processAndStoreOrderData(String orderFilePath, String outputOrderFilePath) {
-        OrderDataProcessor orderManager = new OrderDataProcessor();
-        
-        // Step 1: Read the order data
-        List<Order> orderData = orderManager.readData(orderFilePath);
-        
-        // Step 2: Remove duplicates
-        orderManager.removeDuplicates(orderData);
-        
-        // Step 3: Remove rows with missing data
-        orderData = orderManager.removeRowsWithMissingData(orderData);
-        
-        // Step 4: Get a random sample (returns a sublist)
-        orderData = orderManager.getRandomSample(orderData, 200);
-        
-        // Step 5: Analyze the data
-        orderManager.analyzeData(orderData);
-        
-        // Step 6: Store the processed data
-        orderManager.storeData(orderData, outputOrderFilePath);
-    }
+// Method to process and store order data
+private static void processAndStoreOrderData(String orderFilePath, String outputOrderFilePath) {
+    OrderDataProcessor orderManager = new OrderDataProcessor();
+    
+    // Step 1: Read the order data
+    List<Order> orderData = orderManager.readData(orderFilePath);
+    System.out.println("Data read from file: " + orderData.size() + " orders");
+    
+    // Step 2: Remove duplicates
+    orderManager.removeDuplicates(orderData);
+    System.out.println("After removing duplicates: " + orderData.size() + " orders");
+    
+    // Step 3: Remove rows with missing data
+    orderData = orderManager.removeRowsWithMissingData(orderData);
+    System.out.println("After removing rows with missing data: " + orderData.size() + " orders");
+    
+    // Step 4: Get a random sample (returns a sublist)
+    orderData = orderManager.getRandomSample(orderData, 200);
+    System.out.println("After sampling: " + orderData.size() + " orders");
+    
+    // Step 5: Analyze the data
+    orderManager.analyzeData(orderData);
+    
+    // Step 6: Store the processed data
+    orderManager.storeData(orderData, outputOrderFilePath);
+}
 
-    // Method to process and store product data
-    private static void processAndStoreProductData(String productFilePath, String outputProductFilePath) {
-        ProductDataProcessor productManager = new ProductDataProcessor();
-        
-        // Step 1: Read the product data
-        List<product> productData = productManager.readData(productFilePath);
-        
-        // Step 2: Remove duplicates
-        productManager.removeDuplicates(productData);
-        
-        // Step 3: Remove rows with missing data
-        productData = productManager.removeRowsWithMissingData(productData);
-        
-        // Step 4: Get a random sample (returns a sublist)
-        productData = productManager.getRandomSample(productData, 200);
-        
-        // Step 5: Analyze the data
-        productManager.analyzeData(productData);
-        
-        // Step 6: Store the processed data
-        productManager.storeData(productData, outputProductFilePath);
-    }
+// Method to process and store product data
+private static void processAndStoreProductData(String productFilePath, String outputProductFilePath) {
+    ProductDataProcessor productManager = new ProductDataProcessor();
+    
+    // Step 1: Read the product data
+    List<product> productData = productManager.readData(productFilePath);
+    System.out.println("Data read from file: " + productData.size() + " products");
+    
+    // Step 2: Remove duplicates
+    productManager.removeDuplicates(productData);
+    System.out.println("After removing duplicates: " + productData.size() + " products");
+    
+    // Step 3: Remove rows with missing data
+    productData = productManager.removeRowsWithMissingData(productData);
+    System.out.println("After removing rows with missing data: " + productData.size() + " products");
+    
+    // Step 4: Get a random sample (returns a sublist)
+    productData = productManager.getRandomSample(productData, 200);
+    System.out.println("After sampling: " + productData.size() + " products");
+    
+    // Step 5: Analyze the data
+    productManager.analyzeData(productData);
+    
+    // Step 6: Store the processed data
+    productManager.storeData(productData, outputProductFilePath);
+}
+
 
     // Data management menu
     private static void dataManagementMenu(String customerFilePath, String orderFilePath, String productFilePath,
