@@ -9,6 +9,7 @@ import src.main.java.dataprocessingtest.ProductDataProcessor;
 import src.main.java.model.*;
 
 public class Main {
+    private static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         // Define file paths for the data files
@@ -21,7 +22,7 @@ public class Main {
         
         // Start the user authentication menu
         userAuthenticationMenu(customerFilePath, orderFilePath, productFilePath, outputCustomerFilePath, outputOrderFilePath, outputProductFilePath);
-        dataManagementMenu(customerFilePath,orderFilePath, productFilePath,outputCustomerFilePath, outputOrderFilePath, outputProductFilePath);
+        scanner.close();
     }
     
     // User authentication menu (sign-up, log-in, or exit)
@@ -32,7 +33,7 @@ public class Main {
         while (true) {
             System.out.println("1. Sign Up");
             System.out.println("2. Log In");
-            System.out.println("3. Exit");
+            System.out.println("3. Log out");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume the newline character
@@ -56,7 +57,7 @@ public class Main {
                 case 3:
                     // Exit the program
                     System.out.println("Exiting...");
-                    scanner.close();
+                    System.out.println("Logout completed successfully.");
                     return;
                 default:
                     System.out.println("Invalid choice. Please try again.");
@@ -84,6 +85,7 @@ private static void processAndStoreCustomerData(String customerFilePath, String 
     // Step 4: Get a random sample (returns a sublist)
     customerData = customerManager.getRandomSample(customerData, 200); // Make sure the sample is returned
     System.out.println("After sampling: " + customerData.size() + " customers");
+    System.out.println("\n");
     
     // Step 5: Analyze the data
     customerManager.analyzeData(customerData);
@@ -112,6 +114,7 @@ private static void processAndStoreOrderData(String orderFilePath, String output
     // Step 4: Get a random sample (returns a sublist)
     orderData = orderManager.getRandomSample(orderData, 200);
     System.out.println("After sampling: " + orderData.size() + " orders");
+    System.out.println("\n");
     
     // Step 5: Analyze the data
     orderManager.analyzeData(orderData);
@@ -140,6 +143,7 @@ private static void processAndStoreProductData(String productFilePath, String ou
     // Step 4: Get a random sample (returns a sublist)
     productData = productManager.getRandomSample(productData, 200);
     System.out.println("After sampling: " + productData.size() + " products");
+    System.out.println("\n");
     
     // Step 5: Analyze the data
     productManager.analyzeData(productData);
@@ -161,7 +165,7 @@ private static void processAndStoreProductData(String productFilePath, String ou
             System.out.println("2. Manage Product Data");
             System.out.println("3. Manage Order Data");
             System.out.println("4. Manage All Data");
-            System.out.println("5. Log Out");
+            System.out.println("5. Exit");
             System.out.print("Choose an option: ");
             int choice = scanner.nextInt();
             scanner.nextLine(); // Consume the newline character

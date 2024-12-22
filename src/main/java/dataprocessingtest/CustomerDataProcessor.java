@@ -3,6 +3,7 @@ package src.main.java.dataprocessingtest;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -69,4 +70,35 @@ public class CustomerDataProcessor extends DataProcessor<Customer> {
     protected String getHeader() {
         return "CustomerID,Name,Email,PhoneNumber,City,State,Gender,AgeGroup";  // The header for the customer CSV
     }
+
+    @Override
+    public void analyzeData(List<Customer> data) {
+        System.out.println("Customer Data Analysis");
+       // Analyze customers by gender
+        Map<String, Long> genderCount = data.stream()
+                .collect(Collectors.groupingBy(Customer::getGender, Collectors.counting()));
+        System.out.println("Customer count by gender:");
+        genderCount.forEach((gender, count) -> System.out.println(gender + ": " + count));
+
+        // Analyze customers by age group
+        Map<String, Long> ageGroupCount = data.stream()
+                .collect(Collectors.groupingBy(Customer::getAgeGroup, Collectors.counting()));
+        System.out.println("\nCustomer count by age group:");
+        ageGroupCount.forEach((ageGroup, count) -> System.out.println(ageGroup + ": " + count));
+
+        // Analyze top 5 cities by customer count
+        Map<String, Long> cityCount = data.stream()
+                .collect(Collectors.groupingBy(Customer::getCity, Collectors.counting()));
+
+        List<Map.Entry<String, Long>> topCities = cityCount.entrySet()
+                .stream()
+                .sorted((entry1, entry2) -> Long.compare(entry2.getValue(), entry1.getValue())) // Sort in descending order
+                .limit(5) // Take top 5
+                .collect(Collectors.toList());
+
+        System.out.println("\nTop 5 cities by customer count:");
+        for (Map.Entry<String, Long> entry : topCities) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+    }
+}
 }
