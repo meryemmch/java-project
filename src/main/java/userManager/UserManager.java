@@ -62,59 +62,72 @@ public class UserManager implements UserOperations {
         }
         return null;
     }
+
     @Override
-  public void signup() {
-    Scanner scanner = new Scanner(System.in);
-
-    System.out.print("Enter your name: ");
-    String name = scanner.nextLine();
-
-    System.out.print("Enter your email: ");
-    String email = scanner.nextLine();
-    Validator emailValidator = new EmailValidator();
-    if (!emailValidator.Valid(email)) {
-        System.out.println("Invalid email format. Please try again.");
-        return;
+    public void signup() {
+        Scanner scanner = new Scanner(System.in);
+    
+        String name;
+        do {
+            System.out.print("Enter your name: ");
+            name = scanner.nextLine();
+            if (name.isEmpty()) {
+                System.out.println("Name cannot be empty. Please try again.");
+            }
+        } while (name.isEmpty());
+    
+        String email;
+        Validator emailValidator = new EmailValidator();
+        do {
+            System.out.print("Enter your email: ");
+            email = scanner.nextLine();
+            if (!emailValidator.Valid(email)) {
+                System.out.println("Invalid email format. Please try again.");
+            }
+        } while (!emailValidator.Valid(email));
+    
+        String phoneNumber;
+        Validator phoneValidator = new PhoneNumberValidator();
+        do {
+            System.out.print("Enter your phone number: ");
+            phoneNumber = scanner.nextLine();
+            if (!phoneValidator.Valid(phoneNumber)) {
+                System.out.println("Invalid phone number. Enter a 8-12 digits phone number ");
+            }
+        } while (!phoneValidator.Valid(phoneNumber));
+    
+        String username;
+        Validator usernameValidator = new UserNameValidator();
+        do {
+            System.out.print("Enter a username: ");
+            username = scanner.nextLine();
+            if (!usernameValidator.Valid(username)) {
+                System.out.println("Invalid username. Use 3-20 characters: letters, digits, or underscores.");
+            } else if (UserManager.isUsernameTaken(username)) {
+                System.out.println("Username already taken, try another one.");
+                username = null; // Reset to force re-prompt
+            }
+        } while (username == null);
+    
+        String password;
+        Validator passwordValidator = new PasswordValidator();
+        do {
+            System.out.print("Enter a password (must contain both letters and digits): ");
+            password = scanner.nextLine();
+            if (!passwordValidator.Valid(password)) {
+                System.out.println("Password must contain both letters and digits.");
+            }
+        } while (!passwordValidator.Valid(password));
+    
+        // Create and save new user
+        User newUser = new User(name, email, phoneNumber, username, password);
+        if (UserManager.saveUser(newUser)) {
+            System.out.println("Sign up successful! You can now log in.");
+        } else {
+            System.out.println("Error while signing up. Please try again later.");
+        }
     }
-
-    System.out.print("Enter your phone number: ");
-    String phoneNumber = scanner.nextLine();
-    Validator phoneValidator = new PhoneNumberValidator();
-    if (!phoneValidator.Valid(phoneNumber)) {
-        System.out.println("Invalid phone number. Please enter 10-15 digits only.");
-        return;
-    }
-
-    System.out.print("Enter a username: ");
-    String username = scanner.nextLine();
-    Validator usernameValidator = new UserNameValidator();
-    if (!usernameValidator.Valid(username)) {
-        System.out.println("Invalid username. Use 3-20 characters: letters, digits, or underscores.");
-        return;
-    }
-
-    // Check if username is taken
-    if (UserManager.isUsernameTaken(username)) {
-        System.out.println("Username already taken, try another one.");
-        return;
-    }
-
-    System.out.print("Enter a password (must contain both letters and digits): ");
-    String password = scanner.nextLine();
-    Validator passwordValidator = new PasswordValidator();
-    if (!passwordValidator.Valid(password)) {
-        System.out.println("Password must contain both letters and digits.");
-        return;
-    }
-
-    // Create and save new user
-    User newUser = new User(name, email, phoneNumber, username, password);
-    if (UserManager.saveUser(newUser)) {
-        System.out.println("Sign up successful! You can now log in.");
-    } else {
-        System.out.println("Error while signing up.");
-    }
-}
+    
 
    
     @Override
