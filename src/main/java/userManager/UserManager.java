@@ -142,10 +142,10 @@ public class UserManager implements UserOperations {
 
         User user = UserManager.authenticate(username, password);
         if (user != null) {
-            System.out.println("Welcome " + user.getUsername() + "!");
+            System.out.println("\nWelcome " + user.getUsername() + "!");
             return true;
         } else {
-            System.out.println("Invalid username or password.");
+            System.out.println("\nInvalid username or password.");
             return false;
         }
     }

@@ -48,19 +48,19 @@ public class Main {
                 case 2:
                     // Log in process
                     if (userManager.login()) {
-                        System.out.println("Login successful!");
+                        System.out.println("\nLogin successful!");
                         dataManagementMenu(customerFilePath, orderFilePath, productFilePath, outputCustomerFilePath, outputOrderFilePath, outputProductFilePath);
                     } else {
-                        System.out.println("Login failed. Try again.");
+                        System.out.println("\nLogin failed. Try again.");
                     }
                     break;
                 case 3:
                     // Exit the program
-                    System.out.println("Exiting...");
-                    System.out.println("Logout completed successfully.");
+                    System.out.println("\nExiting...");
+                    System.out.println("\nLogout completed successfully.");
                     return;
                 default:
-                    System.out.println("Invalid choice. Please try again.");
+                    System.out.println("\nInvalid choice. Please try again.");
             }
         }
     }
@@ -72,7 +72,7 @@ private static void processAndStoreCustomerData(String customerFilePath, String 
     
     // Step 1: Read the customer data
     List<Customer> customerData = customerManager.readData(customerFilePath);
-    System.out.println("Data read from file: " + customerData.size() + " customers");
+    System.out.println("\nData read from file: " + customerData.size() + " customers");
     
     // Step 2: Remove duplicates
     customerManager.removeDuplicates(customerData); // Modify in place
@@ -101,7 +101,7 @@ private static void processAndStoreOrderData(String orderFilePath, String output
     
     // Step 1: Read the order data
     List<Order> orderData = orderManager.readData(orderFilePath);
-    System.out.println("Data read from file: " + orderData.size() + " orders");
+    System.out.println("\nData read from file: " + orderData.size() + " orders");
     
     // Step 2: Remove duplicates
     orderManager.removeDuplicates(orderData);
@@ -130,7 +130,7 @@ private static void processAndStoreProductData(String productFilePath, String ou
     
     // Step 1: Read the product data
     List<product> productData = productManager.readData(productFilePath);
-    System.out.println("Data read from file: " + productData.size() + " products");
+    System.out.println("\nData read from file: " + productData.size() + " products");
     
     // Step 2: Remove duplicates
     productManager.removeDuplicates(productData);
@@ -186,10 +186,10 @@ private static void processAndStoreProductData(String productFilePath, String ou
                     processAndStoreOrderData(orderFilePath, outputOrderFilePath);
                     break;
                 case 5:
-                    System.out.println("Exiting Data Management Menu...");
+                    System.out.println("\nExiting Data Management Menu...");
                     return;
                 default:
-                    System.out.println("Invalid choice. Please try again.");
+                    System.out.println("\nInvalid choice. Please try again.");
             }
         }
     }

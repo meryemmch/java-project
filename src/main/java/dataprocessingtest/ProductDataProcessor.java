@@ -1,8 +1,12 @@
 package src.main.java.dataprocessingtest;
 
 
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -59,5 +63,55 @@ public class ProductDataProcessor extends DataProcessor<product> {
     @Override
     protected String getHeader() {
         return "ProductID,ProductName,Category,SubCategory,Brand,Price";  // The header for the product CSV
+    }
+
+     @Override
+    public void analyzeData(List<product> data) {
+        System.out.println("Analyzing Product data...");
+
+        // Unique categories
+        List<String> categories = data.stream()
+                .map(product::getcategory)
+                .distinct()
+                .collect(Collectors.toList());
+        System.out.println("\nCategories: " + categories);
+
+        // Unique brands
+        List<String> brands = data.stream()
+                .map(product::getbrand)
+                .distinct()
+                .collect(Collectors.toList());
+        System.out.println("Brands: " + brands);
+
+        // Product count by category
+        Map<String, Long> productCountByCategory = data.stream()
+                .collect(Collectors.groupingBy(product::getcategory, Collectors.counting()));
+        System.out.println("\nProduct Count by Category: " + productCountByCategory);
+
+        // Cheapest and most expensive product
+        Optional<product> cheapestProduct = data.stream()
+                .min(Comparator.comparingDouble(product::getprice));
+        Optional<product> mostExpensiveProduct = data.stream()
+                .max(Comparator.comparingDouble(product::getprice));
+
+        System.out.println("\nCheapest Product: " + cheapestProduct.map(product::getproductName).orElse("Not Found"));
+        System.out.println("\nMost Expensive Product: " + mostExpensiveProduct.map(product::getproductName).orElse("Not Found"));
+
+        // Cheapest and most expensive product by category
+        Map<String, Map<String, String>> cheapestAndMostExpensiveByCategory = new HashMap<>();
+        data.stream()
+                .collect(Collectors.groupingBy(product::getcategory))
+                .forEach((category, products) -> {
+                    Optional<product> cheapest = products.stream()
+                            .min(Comparator.comparingDouble(product::getprice));
+                    Optional<product> mostExpensive = products.stream()
+                            .max(Comparator.comparingDouble(product::getprice));
+
+                    Map<String, String> priceMap = new HashMap<>();
+                    priceMap.put("Cheapest", cheapest.map(product::getproductName).orElse("Not Found"));
+                    priceMap.put("Most Expensive", mostExpensive.map(product::getproductName).orElse("Not Found"));
+                    cheapestAndMostExpensiveByCategory.put(category, priceMap);
+                });
+        System.out.println("\nCheapest and Most Expensive Products by Category: " + cheapestAndMostExpensiveByCategory);
     }
 }

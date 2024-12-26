@@ -77,7 +77,7 @@ public class CustomerDataProcessor extends DataProcessor<Customer> {
        // Analyze customers by gender
         Map<String, Long> genderCount = data.stream()
                 .collect(Collectors.groupingBy(Customer::getGender, Collectors.counting()));
-        System.out.println("Customer count by gender:");
+        System.out.println("\nCustomer count by gender:");
         genderCount.forEach((gender, count) -> System.out.println(gender + ": " + count));
 
         // Analyze customers by age group
