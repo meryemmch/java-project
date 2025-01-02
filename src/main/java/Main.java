@@ -21,24 +21,10 @@ public class Main {
         String outputOrderFilePath = "resources/outputorder.csv";
         String outputProductFilePath = "resources/outputproduct.csv";
         
-        List<Order> orderData = processAndStoreOrderData(orderFilePath, outputOrderFilePath);
-        ReportGenerator reportGenerator = new ReportGenerator();
-        reportGenerator.generateOrderReport(orderData);
-        System.out.println("Order report generation completed.");
-
-        // Process and generate reports for customers
-        List<Customer> customerData = processAndStoreCustomerData(customerFilePath, outputCustomerFilePath);
-        reportGenerator.generateCustomerReport(customerData);
-        System.out.println("Customer report generation completed.");
-
-        // Process and generate reports for products
-        List<product> productData = processAndStoreProductData(productFilePath, outputProductFilePath);
-        reportGenerator.generateProductReport(productData);
-        System.out.println("Product report generation completed.");
-
         // Start the user authentication menu
         userAuthenticationMenu(customerFilePath, orderFilePath, productFilePath, outputCustomerFilePath, outputOrderFilePath, outputProductFilePath);
         scanner.close();
+
     }
     
     // User authentication menu (sign-up, log-in, or exit)
@@ -171,7 +157,6 @@ private static List<product> processAndStoreProductData(String productFilePath, 
     return productData; // Return the processed product data
 }
 
-
     // Data management menu
     private static void dataManagementMenu(String customerFilePath, String orderFilePath, String productFilePath,
                                            String outputCustomerFilePath, String outputOrderFilePath, String outputProductFilePath) {
@@ -211,4 +196,26 @@ private static List<product> processAndStoreProductData(String productFilePath, 
             }
         }
     }
+
+    
+    private static void orderDataReport(String orderFilePath, String outputOrderFilePath){
+        List<Order> orderData = processAndStoreOrderData(orderFilePath, outputOrderFilePath);
+        ReportGenerator reportGenerator = new ReportGenerator();
+        reportGenerator.generateOrderReport(orderData);
+        System.out.println("Order report generation completed.");
+        };
+   
+        private static void customerDataReport(String customerFilePath, String outputCustomerFilePath){
+        List<Customer> customerData = processAndStoreCustomerData(customerFilePath, outputCustomerFilePath);
+        ReportGenerator reportGenerator = new ReportGenerator();
+        reportGenerator.generateCustomerReport(customerData);
+        System.out.println("Customer report generation completed.");
+       };
+   
+        private static void productDataReport(String productFilePath, String outputProductFilePath){
+        List<product> productData = processAndStoreProductData(productFilePath, outputProductFilePath);
+        ReportGenerator reportGenerator = new ReportGenerator();
+        reportGenerator.generateProductReport(productData);
+        System.out.println("Product report generation completed.");
+       };
 }
