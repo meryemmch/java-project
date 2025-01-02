@@ -157,65 +157,109 @@ private static List<product> processAndStoreProductData(String productFilePath, 
     return productData; // Return the processed product data
 }
 
-    // Data management menu
-    private static void dataManagementMenu(String customerFilePath, String orderFilePath, String productFilePath,
-                                           String outputCustomerFilePath, String outputOrderFilePath, String outputProductFilePath) {
-        Scanner scanner = new Scanner(System.in);
-        
-        while (true) {
-            System.out.println("\nData Management Menu:");
-            System.out.println("1. Manage Customer Data");
-            System.out.println("2. Manage Product Data");
-            System.out.println("3. Manage Order Data");
-            System.out.println("4. Manage All Data");
-            System.out.println("5. Exit");
-            System.out.print("Choose an option: ");
-            int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
-            
-            switch (choice) {
-                case 1:
-                    processAndStoreCustomerData(customerFilePath, outputCustomerFilePath);
-                    break;
-                case 2:
-                    processAndStoreProductData(productFilePath, outputProductFilePath);
-                    break;
-                case 3:
-                    processAndStoreOrderData(orderFilePath, outputOrderFilePath);
-                    break;
-                case 4:
-                    processAndStoreCustomerData(customerFilePath, outputCustomerFilePath);
-                    processAndStoreProductData(productFilePath, outputProductFilePath);
-                    processAndStoreOrderData(orderFilePath, outputOrderFilePath);
-                    break;
-                case 5:
-                    System.out.println("\nExiting Data Management Menu...");
-                    return;
-                default:
-                    System.out.println("\nInvalid choice. Please try again.");
-            }
+   private static void dataManagementMenu(String customerFilePath, String orderFilePath, String productFilePath,
+                                       String outputCustomerFilePath, String outputOrderFilePath, String outputProductFilePath) {
+    Scanner scanner = new Scanner(System.in);
+
+    // Declare the data variables as final
+    final List<Customer>[] customerData = new List[]{null};
+    final List<Order>[] orderData = new List[]{null};
+    final List<product>[] productData = new List[]{null};
+
+    while (true) {
+        System.out.println("\nData Management Menu:");
+        System.out.println("1. Manage Customer Data");
+        System.out.println("2. Manage Product Data");
+        System.out.println("3. Manage Order Data");
+        System.out.println("4. Manage All Data");
+        System.out.println("5. Exit");
+        System.out.print("Choose an option: ");
+        int choice = scanner.nextInt();
+        scanner.nextLine(); // Consume the newline character
+
+        switch (choice) {
+            case 1:
+                if (customerData[0] == null) {
+                    customerData[0] = processAndStoreCustomerData(customerFilePath, outputCustomerFilePath);
+                }
+                askToGenerateReport("customer", () -> customerDataReport(customerData[0], outputCustomerFilePath), customerData[0] != null);
+                break;
+            case 2:
+                if (productData[0] == null) {
+                    productData[0] = processAndStoreProductData(productFilePath, outputProductFilePath);
+                }
+                askToGenerateReport("product", () -> productDataReport(productData[0], outputProductFilePath), productData[0] != null);
+                break;
+            case 3:
+                if (orderData[0] == null) {
+                    orderData[0] = processAndStoreOrderData(orderFilePath, outputOrderFilePath);
+                }
+                askToGenerateReport("order", () -> orderDataReport(orderData[0], outputOrderFilePath), orderData[0] != null);
+                break;
+            case 4:
+                if (customerData[0] == null) {
+                    customerData[0] = processAndStoreCustomerData(customerFilePath, outputCustomerFilePath);
+                }
+                askToGenerateReport("customer", () -> customerDataReport(customerData[0], outputCustomerFilePath), customerData[0] != null);
+
+                if (productData[0] == null) {
+                    productData[0] = processAndStoreProductData(productFilePath, outputProductFilePath);
+                }
+                askToGenerateReport("product", () -> productDataReport(productData[0], outputProductFilePath), productData[0] != null);
+
+                if (orderData[0] == null) {
+                    orderData[0] = processAndStoreOrderData(orderFilePath, outputOrderFilePath);
+                }
+                askToGenerateReport("order", () -> orderDataReport(orderData[0], outputOrderFilePath), orderData[0] != null);
+                break;
+            case 5:
+                System.out.println("\nExiting Data Management Menu...");
+                return;
+            default:
+                System.out.println("\nInvalid choice. Please try again.");
         }
     }
+}
+
+
 
     
-    private static void orderDataReport(String orderFilePath, String outputOrderFilePath){
-        List<Order> orderData = processAndStoreOrderData(orderFilePath, outputOrderFilePath);
+private static void orderDataReport(List<Order> orderData, String outputOrderFilePath){
         ReportGenerator reportGenerator = new ReportGenerator();
         reportGenerator.generateOrderReport(orderData);
-        System.out.println("Order report generation completed.");
-        };
+        System.out.println("\nOrder report generation completed.");
+};
    
-        private static void customerDataReport(String customerFilePath, String outputCustomerFilePath){
-        List<Customer> customerData = processAndStoreCustomerData(customerFilePath, outputCustomerFilePath);
+private static void customerDataReport(List<Customer> customerData, String outputCustomerFilePath){
         ReportGenerator reportGenerator = new ReportGenerator();
         reportGenerator.generateCustomerReport(customerData);
-        System.out.println("Customer report generation completed.");
-       };
+        System.out.println("\nCustomer report generation completed.");
+};
    
-        private static void productDataReport(String productFilePath, String outputProductFilePath){
-        List<product> productData = processAndStoreProductData(productFilePath, outputProductFilePath);
+private static void productDataReport(List<product> productData, String outputProductFilePath){
         ReportGenerator reportGenerator = new ReportGenerator();
         reportGenerator.generateProductReport(productData);
-        System.out.println("Product report generation completed.");
-       };
+        System.out.println("\nProduct report generation completed.");
+};
+
+
+private static void askToGenerateReport(String dataType, Runnable reportGenerator, boolean isDataProcessed) {
+    if (!isDataProcessed) {
+        System.out.println("\nData is not yet processed for " + dataType + ". Skipping report generation.");
+        return;
+    }
+
+    Scanner scanner = new Scanner(System.in);
+    System.out.print("\nDo you want to generate the " + dataType + " data report? (yes/no): ");
+    String response = scanner.nextLine().trim().toLowerCase();
+
+    if (response.equals("yes")) {
+        reportGenerator.run();
+    } else if (response.equals("no")) {
+        System.out.println("\nSkipping " + dataType + " report generation.");
+    } else {
+        System.out.println("\nInvalid response. Skipping " + dataType + " report generation.");
+    }
+}
+
 }
