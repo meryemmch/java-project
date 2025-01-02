@@ -3,6 +3,7 @@ package src.main.java;
 import java.util.List;
 import java.util.Scanner;
 import src.main.java.userManager.*;
+import src.main.java.ReportGenerator.ReportGenerator;
 import src.main.java.dataprocessingtest.CustomerDataProcessor;
 import src.main.java.dataprocessingtest.OrderDataProcessor;
 import src.main.java.dataprocessingtest.ProductDataProcessor;
@@ -20,6 +21,21 @@ public class Main {
         String outputOrderFilePath = "resources/outputorder.csv";
         String outputProductFilePath = "resources/outputproduct.csv";
         
+        List<Order> orderData = processAndStoreOrderData(orderFilePath, outputOrderFilePath);
+        ReportGenerator reportGenerator = new ReportGenerator();
+        reportGenerator.generateOrderReport(orderData);
+        System.out.println("Order report generation completed.");
+
+        // Process and generate reports for customers
+        List<Customer> customerData = processAndStoreCustomerData(customerFilePath, outputCustomerFilePath);
+        reportGenerator.generateCustomerReport(customerData);
+        System.out.println("Customer report generation completed.");
+
+        // Process and generate reports for products
+        List<product> productData = processAndStoreProductData(productFilePath, outputProductFilePath);
+        reportGenerator.generateProductReport(productData);
+        System.out.println("Product report generation completed.");
+
         // Start the user authentication menu
         userAuthenticationMenu(customerFilePath, orderFilePath, productFilePath, outputCustomerFilePath, outputOrderFilePath, outputProductFilePath);
         scanner.close();
@@ -65,92 +81,94 @@ public class Main {
         }
     }
 
-    // Method to process and store customer data
-     // Method to process and store customer data
-private static void processAndStoreCustomerData(String customerFilePath, String outputCustomerFilePath) {
-    CustomerDataProcessor customerManager = new CustomerDataProcessor();
-    
-    // Step 1: Read the customer data
-    List<Customer> customerData = customerManager.readData(customerFilePath);
-    System.out.println("\nData read from file: " + customerData.size() + " customers");
-    
-    // Step 2: Remove duplicates
-    customerManager.removeDuplicates(customerData); // Modify in place
-    System.out.println("After removing duplicates: " + customerData.size() + " customers");
-    
-    // Step 3: Remove rows with missing data
-    customerData = customerManager.removeRowsWithMissingData(customerData); // Returns new list
-    System.out.println("After removing rows with missing data: " + customerData.size() + " customers");
-    
-    // Step 4: Get a random sample (returns a sublist)
-    customerData = customerManager.getRandomSample(customerData, 200); // Make sure the sample is returned
-    System.out.println("After sampling: " + customerData.size() + " customers");
-    System.out.println("\n");
-    
-    // Step 5: Analyze the data
-    customerManager.analyzeData(customerData);
-    
-    // Step 6: Store the processed data
-    customerManager.storeData(customerData, outputCustomerFilePath);
-    System.out.println("\n");
-}
-
-// Method to process and store order data
-private static void processAndStoreOrderData(String orderFilePath, String outputOrderFilePath) {
+  // Process and store order data
+  private static List<Order> processAndStoreOrderData(String orderFilePath, String outputOrderFilePath) {
     OrderDataProcessor orderManager = new OrderDataProcessor();
-    
+
     // Step 1: Read the order data
     List<Order> orderData = orderManager.readData(orderFilePath);
     System.out.println("\nData read from file: " + orderData.size() + " orders");
-    
+
     // Step 2: Remove duplicates
     orderManager.removeDuplicates(orderData);
     System.out.println("After removing duplicates: " + orderData.size() + " orders");
-    
+
     // Step 3: Remove rows with missing data
     orderData = orderManager.removeRowsWithMissingData(orderData);
     System.out.println("After removing rows with missing data: " + orderData.size() + " orders");
-    
+
     // Step 4: Get a random sample (returns a sublist)
     orderData = orderManager.getRandomSample(orderData, 200);
     System.out.println("After sampling: " + orderData.size() + " orders");
     System.out.println("\n");
-    
+
     // Step 5: Analyze the data
     orderManager.analyzeData(orderData);
-    
+
     // Step 6: Store the processed data
     orderManager.storeData(orderData, outputOrderFilePath);
-  
+
+    return orderData; // Return the processed order data
 }
 
-// Method to process and store product data
-private static void processAndStoreProductData(String productFilePath, String outputProductFilePath) {
+// Process and store customer data
+private static List<Customer> processAndStoreCustomerData(String customerFilePath, String outputCustomerFilePath) {
+    CustomerDataProcessor customerManager = new CustomerDataProcessor();
+
+    // Step 1: Read the customer data
+    List<Customer> customerData = customerManager.readData(customerFilePath);
+    System.out.println("\nData read from file: " + customerData.size() + " customers");
+
+    // Step 2: Remove duplicates
+    customerManager.removeDuplicates(customerData);
+    System.out.println("After removing duplicates: " + customerData.size() + " customers");
+
+    // Step 3: Remove rows with missing data
+    customerData = customerManager.removeRowsWithMissingData(customerData);
+    System.out.println("After removing rows with missing data: " + customerData.size() + " customers");
+
+    // Step 4: Get a random sample (returns a sublist)
+    customerData = customerManager.getRandomSample(customerData, 200);
+    System.out.println("After sampling: " + customerData.size() + " customers");
+    System.out.println("\n");
+
+    // Step 5: Analyze the data
+    customerManager.analyzeData(customerData);
+
+    // Step 6: Store the processed data
+    customerManager.storeData(customerData, outputCustomerFilePath);
+
+    return customerData; // Return the processed customer data
+}
+
+// Process and store product data
+private static List<product> processAndStoreProductData(String productFilePath, String outputProductFilePath) {
     ProductDataProcessor productManager = new ProductDataProcessor();
-    
+
     // Step 1: Read the product data
     List<product> productData = productManager.readData(productFilePath);
     System.out.println("\nData read from file: " + productData.size() + " products");
-    
+
     // Step 2: Remove duplicates
     productManager.removeDuplicates(productData);
     System.out.println("After removing duplicates: " + productData.size() + " products");
-    
+
     // Step 3: Remove rows with missing data
     productData = productManager.removeRowsWithMissingData(productData);
     System.out.println("After removing rows with missing data: " + productData.size() + " products");
-    
+
     // Step 4: Get a random sample (returns a sublist)
     productData = productManager.getRandomSample(productData, 200);
     System.out.println("After sampling: " + productData.size() + " products");
     System.out.println("\n");
-    
+
     // Step 5: Analyze the data
     productManager.analyzeData(productData);
-    
+
     // Step 6: Store the processed data
     productManager.storeData(productData, outputProductFilePath);
-    System.out.println("\n");
+
+    return productData; // Return the processed product data
 }
 
 

@@ -12,6 +12,28 @@ import java.util.stream.Collectors;
 import src.main.java.model.Order;
 
 public class OrderDataProcessor extends DataProcessor<Order> {
+    private Map<String, Long> ordersByPaymentMethod;
+    private Map<String, Double> totalRevenueByProduct;
+    private Map<String, Long> ordersByStatus;
+    private double totalRevenue;
+    private double avgDiscount;
+    private double avgShippingCost;
+    private Map<Integer, Long> ratingFrequency;
+    private Map<String, Long> deliveryStatusFrequency;
+    private int bestRating;
+    private int worstRating;
+    private long bestReviewsCount;
+    private long worstReviewsCount;
+    private Order highestOrder;
+    private Map<String, Double> maxDiscountByProduct;
+    private Map<String, Double> minDiscountByProduct;
+    private Map<String, Double> avgRatingPerProduct;
+    private String mostBoughtProduct;
+    private Map<String, Integer> modeQuantityByProduct;
+    private Map<String, Double> monthlySales;
+    private double[] quantityCoefficients;
+    private double[] shippingCostCoefficients;
+    private double[] discountAmountCoefficients;
 
     // Parse each line of the CSV to create an Order object
     @Override
@@ -73,154 +95,210 @@ public class OrderDataProcessor extends DataProcessor<Order> {
     }
 
     @Override
-public void analyzeData(List<Order> data) {
-    
-    if (data == null || data.isEmpty()) {
-        System.out.println("No data available to analyze.");
-        return;
+    public void analyzeData(List<Order> data) {
+        if (data == null || data.isEmpty()) {
+            System.out.println("No data available to analyze.");
+            return;
+        }
+
+        // Total Revenue
+        this.totalRevenue = data.stream().mapToDouble(o -> o.getTotalAmount()).sum();
+        System.out.println("Total Revenue: " + totalRevenue); // Debug output
+
+        // Orders by payment method
+        this.ordersByPaymentMethod = data.stream()
+        .collect(Collectors.groupingBy(Order::getPaymentMethod, Collectors.counting()));
+        System.out.println("\nOrders by Payment Method: " + ordersByPaymentMethod);
+
+        // Average discount and shipping cost
+        this.avgDiscount = data.stream().mapToDouble(Order::getDiscountAmount).average().orElse(0);
+        this.avgShippingCost = data.stream().mapToDouble(Order::getShippingCost).average().orElse(0);
+        System.out.println("Average Discount: " + avgDiscount + ", Average Shipping Cost: " + avgShippingCost); // Debug output
+
+        // Rating frequency
+        this.ratingFrequency = data.stream()
+                .collect(Collectors.groupingBy(Order::getReviewRating, Collectors.counting()));
+        System.out.println("Rating Frequency: " + ratingFrequency); // Debug output
+
+        // Delivery status frequency
+        this.deliveryStatusFrequency = data.stream()
+                .collect(Collectors.groupingBy(Order::getDeliveryStatus, Collectors.counting()));
+        System.out.println("Delivery Status Frequency: " + deliveryStatusFrequency); // Debug output
+
+        // Best and worst reviews
+        this.bestRating = data.stream().mapToInt(Order::getReviewRating).max().orElse(0);
+        this.worstRating = data.stream().mapToInt(Order::getReviewRating).min().orElse(0);
+        this.bestReviewsCount = data.stream().filter(o -> o.getReviewRating() == bestRating).count();
+        this.worstReviewsCount = data.stream().filter(o -> o.getReviewRating() == worstRating).count();
+        System.out.println("Best Rating: " + bestRating + ", Worst Rating: " + worstRating); // Debug output
+        System.out.println("Best Reviews Count: " + bestReviewsCount + ", Worst Reviews Count: " + worstReviewsCount); // Debug output
+
+        // Order with the highest total amount
+        this.highestOrder = data.stream().max(Comparator.comparingDouble(Order::getTotalAmount)).orElse(null);
+        if (highestOrder == null) {
+            System.out.println("No highest order found.");
+        } else {
+            System.out.println("\nHighest Order: " + highestOrder.getOrderId() + " with Total Amount: " + highestOrder.getTotalAmount()); // Debug output
+        }
+
+        // Maximum discount by product
+        this.maxDiscountByProduct = data.stream()
+                .collect(Collectors.groupingBy(Order::getProductId,
+                        Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparingDouble(Order::getDiscountAmount)),
+                                o -> o.map(Order::getDiscountAmount).orElse(0.0))));
+        System.out.println("\nMax Discount by Product: " + maxDiscountByProduct); // Debug output
+
+        // Minimum discount by product
+        this.minDiscountByProduct = data.stream()
+                .collect(Collectors.groupingBy(Order::getProductId,
+                        Collectors.collectingAndThen(Collectors.minBy(Comparator.comparingDouble(Order::getDiscountAmount)),
+                                o -> o.map(Order::getDiscountAmount).orElse(0.0))));
+        System.out.println("Min Discount by Product: " + minDiscountByProduct); // Debug output
+
+        // Average rating by product
+        this.avgRatingPerProduct = data.stream()
+                .collect(Collectors.groupingBy(Order::getProductId, Collectors.averagingInt(Order::getReviewRating)));
+        System.out.println("Avg Rating Per Product: " + avgRatingPerProduct); // Debug output
+
+        // Most frequently bought product
+        this.mostBoughtProduct = data.stream()
+                .collect(Collectors.groupingBy(Order::getProductId, Collectors.summingInt(Order::getQuantity)))
+                .entrySet().stream().max(Map.Entry.comparingByValue())
+                .map(Map.Entry::getKey).orElse("No Product");
+        System.out.println("Most Bought Product: " + mostBoughtProduct); // Debug output
+
+        // Mode of quantity for products
+        this.modeQuantityByProduct = data.stream()
+                .collect(Collectors.groupingBy(Order::getProductId,
+                        Collectors.collectingAndThen(Collectors.groupingBy(Order::getQuantity, Collectors.counting()),
+                                m -> m.entrySet().stream().max(Map.Entry.comparingByValue()).get().getKey())));
+        System.out.println("Mode Quantity by Product: " + modeQuantityByProduct); // Debug output
+
+        // Monthly sales
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        this.monthlySales = data.stream()
+                .collect(Collectors.groupingBy(o -> {
+                    try {
+                        return LocalDate.parse(o.getOrderDate(), formatter).getMonth().toString();
+                    } catch (Exception e) {
+                        return "Unknown";
+                    }
+                }, Collectors.summingDouble(Order::getTotalAmount)));
+        System.out.println("Monthly Sales: " + monthlySales); // Debug output
+
+        // Regression Analysis
+        List<Double> quantities = data.stream().map(Order::getQuantity).mapToDouble(i -> i).boxed().collect(Collectors.toList());
+        List<Double> shippingCosts = data.stream().map(Order::getShippingCost).collect(Collectors.toList());
+        List<Double> discountAmounts = data.stream().map(Order::getDiscountAmount).collect(Collectors.toList());
+        List<Double> totalAmounts = data.stream().map(Order::getTotalAmount).collect(Collectors.toList());
+
+        // Simple regression with totalAmount as the target variable
+        quantityCoefficients = performSimpleLinearRegression(quantities, totalAmounts);
+        shippingCostCoefficients = performSimpleLinearRegression(shippingCosts, totalAmounts);
+        discountAmountCoefficients = performSimpleLinearRegression(discountAmounts, totalAmounts);
     }
-    System.out.println("Order Data Analysis");
-    // Total Revenue
-    double totalRevenue = data.stream().mapToDouble(o -> o.getTotalAmount()).sum();
-    System.out.println("\nTotal Revenue: $" + totalRevenue);
 
-    // Number of orders per payment method
-    Map<String, Long> ordersByPaymentMethod = data.stream()
-            .collect(Collectors.groupingBy(Order::getPaymentMethod, Collectors.counting()));
-    System.out.println("\nOrders by Payment Method: " + ordersByPaymentMethod);
+    private double[] performSimpleLinearRegression(List<Double> x, List<Double> y) {
+        // Ensure data size matches
+        if (x.size() != y.size()) throw new IllegalArgumentException("Size of x and y must match.");
+        
+        // Calculate means
+        double meanX = x.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
+        double meanY = y.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
 
-    // Average discount and shipping cost
-    double avgDiscount = data.stream().mapToDouble(Order::getDiscountAmount).average().orElse(0);
-    double avgShippingCost = data.stream().mapToDouble(Order::getShippingCost).average().orElse(0);
-    System.out.println("\nAverage Discount: $" + avgDiscount);
-    System.out.println("\nAverage Shipping Cost: $" + avgShippingCost);
+        // Calculate the regression coefficients (slope and intercept)
+        double numerator = 0.0;
+        double denominator = 0.0;
+        for (int i = 0; i < x.size(); i++) {
+            numerator += (x.get(i) - meanX) * (y.get(i) - meanY);
+            denominator += (x.get(i) - meanX) * (x.get(i) - meanX);
+        }
+        double slope = numerator / denominator;
+        double intercept = meanY - slope * meanX;
 
-    // Frequency of ratings
-    Map<Integer, Long> ratingFrequency = data.stream()
-            .collect(Collectors.groupingBy(Order::getReviewRating, Collectors.counting()));
-    System.out.println("\nRating Frequency: " + ratingFrequency);
-
-    // Frequency of delivery status
-    Map<String, Long> deliveryStatusFrequency = data.stream()
-            .collect(Collectors.groupingBy(Order::getDeliveryStatus, Collectors.counting()));
-    System.out.println("\nDelivery Status Frequency: " + deliveryStatusFrequency);
-
-    // Best and worst reviews
-    int bestRating = data.stream().mapToInt(Order::getReviewRating).max().orElse(0);
-    int worstRating = data.stream().mapToInt(Order::getReviewRating).min().orElse(0);
-    long bestReviewsCount = data.stream().filter(o -> o.getReviewRating() == bestRating).count();
-    long worstReviewsCount = data.stream().filter(o -> o.getReviewRating() == worstRating).count();
-    System.out.println("\nNumber of Best Reviews: " + bestReviewsCount);
-    System.out.println("\nNumber of Worst Reviews: " + worstReviewsCount);
-
-    // Order with the highest total amount
-    Order highestOrder = data.stream().max(Comparator.comparingDouble(Order::getTotalAmount)).orElse(null);
-    if (highestOrder != null) {
-        System.out.println("\nOrder with Highest Total Amount: " + highestOrder.getOrderId());
+        return new double[]{slope, intercept};
+        
+       
     }
 
-    // Maximum and Minimum Discount by Product
-    Map<String, Double> maxDiscountByProduct = data.stream()
-            .collect(Collectors.groupingBy(Order::getProductId, 
-                    Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparingDouble(Order::getDiscountAmount)), 
-                            o -> o.map(Order::getDiscountAmount).orElse(0.0))));
-    Map<String, Double> minDiscountByProduct = data.stream()
-            .collect(Collectors.groupingBy(Order::getProductId, 
-                    Collectors.collectingAndThen(Collectors.minBy(Comparator.comparingDouble(Order::getDiscountAmount)), 
-                            o -> o.map(Order::getDiscountAmount).orElse(0.0))));
-    // Print Maximum Discount - limited to first 10 products
-    System.out.println("\nMaximum Discount by Product (First 10):");
-    maxDiscountByProduct.entrySet().stream()
-        .limit(10)
-        .forEach(entry -> System.out.println(entry.getKey() + ": " + entry.getValue()));
-
-    // Print Minimum Discount - limited to first 10 products
-    System.out.println("\nMinimum Discount by Product (First 10):");
-    minDiscountByProduct.entrySet().stream()
-        .limit(10)
-        .forEach(entry -> System.out.println(entry.getKey() + ": " + entry.getValue()));
-
-    // Average rating by product
-    System.out.println( "\nAverage rating by product");
-    Map<String, Double> avgRatingPerProduct = data.stream()
-        .collect(Collectors.groupingBy(Order::getProductId, Collectors.averagingInt(Order::getReviewRating)));
-
-    // Limit the output to the first 10 products
-    avgRatingPerProduct.entrySet().stream()
-        .limit(10)
-        .forEach(entry -> System.out.println(entry.getKey() + ": " + entry.getValue()));
-
-    // Most frequently bought product
-    String mostBoughtProduct = data.stream()
-            .collect(Collectors.groupingBy(Order::getProductId, Collectors.summingInt(Order::getQuantity)))
-            .entrySet().stream().max(Map.Entry.comparingByValue())
-            .map(Map.Entry::getKey).orElse("No Product");
-    System.out.println("\nMost Frequently Bought Product: " + mostBoughtProduct);
-
-    // Mode of quantity for products
-    Map<String, Integer> modeQuantityByProduct = data.stream()
-            .collect(Collectors.groupingBy(Order::getProductId, 
-                    Collectors.collectingAndThen(Collectors.groupingBy(Order::getQuantity, Collectors.counting()), 
-                            m -> m.entrySet().stream().max(Map.Entry.comparingByValue()).get().getKey())));
-    // Print Mode Quantity - limited to first 10 products
-    System.out.println("\nMode Quantity by Product (First 10):");
-    modeQuantityByProduct.entrySet().stream()
-        .limit(10)
-        .forEach(entry -> System.out.println(entry.getKey() + ": " + entry.getValue()));
-
-    // Monthly Sales
-    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-    Map<String, Double> monthlySales = data.stream()
-            .collect(Collectors.groupingBy(o -> {
-                try {
-                    return LocalDate.parse(o.getOrderDate(), formatter).getMonth().toString();
-                } catch (Exception e) {
-                    return "Unknown";
-                }
-            }, Collectors.summingDouble(Order::getTotalAmount)));
-    System.out.println("\nMonthly Sales: " + monthlySales);
-
-     // Regression Analysis: Predict totalAmount based on quantity, shippingCost, and discountAmount
-     System.out.println("\nPerforming Regression Analysis...");
-    
-     // Prepare data
-     List<Double> quantities = data.stream().map(Order::getQuantity).mapToDouble(i -> i).boxed().collect(Collectors.toList());
-     List<Double> shippingCosts = data.stream().map(Order::getShippingCost).collect(Collectors.toList());
-     List<Double> discountAmounts = data.stream().map(Order::getDiscountAmount).collect(Collectors.toList());
-     List<Double> totalAmounts = data.stream().map(Order::getTotalAmount).collect(Collectors.toList());
- 
-     // Simple regression with totalAmount as the target variable
-     double[] quantityCoefficients = performSimpleLinearRegression(quantities, totalAmounts);
-     double[] shippingCostCoefficients = performSimpleLinearRegression(shippingCosts, totalAmounts);
-     double[] discountAmountCoefficients = performSimpleLinearRegression(discountAmounts, totalAmounts);
- 
-     // Display regression results
-     System.out.println("\nRegression Results:");
-     System.out.println("Impact of Quantity on Total Amount: Coefficient = " + quantityCoefficients[0] + ", Intercept = " + quantityCoefficients[1]);
-     System.out.println("Impact of Shipping Cost on Total Amount: Coefficient = " + shippingCostCoefficients[0] + ", Intercept = " + shippingCostCoefficients[1]);
-     System.out.println("Impact of Discount Amount on Total Amount: Coefficient = " + discountAmountCoefficients[0] + ", Intercept = " + discountAmountCoefficients[1]);
- 
+public Map<String, Long> getOrdersByPaymentMethod() {
+    return ordersByPaymentMethod;
 }
-private double[] performSimpleLinearRegression(List<Double> x, List<Double> y) {
-    // Ensure data size matches
-    if (x.size() != y.size()) throw new IllegalArgumentException("Size of x and y must match.");
-    
-    // Calculate means
-    double meanX = x.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
-    double meanY = y.stream().mapToDouble(Double::doubleValue).average().orElse(0.0);
 
-    // Calculate the regression coefficients (slope and intercept)
-    double numerator = 0.0;
-    double denominator = 0.0;
-    for (int i = 0; i < x.size(); i++) {
-        numerator += (x.get(i) - meanX) * (y.get(i) - meanY);
-        denominator += (x.get(i) - meanX) * (x.get(i) - meanX);
-    }
+public double getTotalRevenue() {
+    return totalRevenue;
+}
 
-    double slope = numerator / denominator;
-    double intercept = meanY - slope * meanX;
+public double getAvgDiscount() {
+    return avgDiscount;
+}
 
-    return new double[]{slope, intercept};
+public double getAvgShippingCost() {
+    return avgShippingCost;
+}
+
+public Map<Integer, Long> getRatingFrequency() {
+    return ratingFrequency;
+}
+
+public Map<String, Long> getDeliveryStatusFrequency() {
+    return deliveryStatusFrequency;
+}
+
+public int getBestRating() {
+    return bestRating;
+}
+
+public int getWorstRating() {
+    return worstRating;
+}
+
+public long getBestReviewsCount() {
+    return bestReviewsCount;
+}
+
+public long getWorstReviewsCount() {
+    return worstReviewsCount;
+}
+
+public Order getHighestOrder() {
+    return highestOrder;
+}
+
+public Map<String, Double> getMaxDiscountByProduct() {
+    return maxDiscountByProduct;
+}
+
+public Map<String, Double> getMinDiscountByProduct() {
+    return minDiscountByProduct;
+}
+
+public Map<String, Double> getAvgRatingPerProduct() {
+    return avgRatingPerProduct;
+}
+
+public String getMostBoughtProduct() {
+    return mostBoughtProduct;
+}
+
+public Map<String, Integer> getModeQuantityByProduct() {
+    return modeQuantityByProduct;
+}
+
+public Map<String, Double> getMonthlySales() {
+    return monthlySales;
+}
+
+public double[] getQuantityCoefficients() {
+    return quantityCoefficients;
+}
+
+public double[] getShippingCostCoefficients() {
+    return shippingCostCoefficients;
+}
+
+public double[] getDiscountAmountCoefficients() {
+    return discountAmountCoefficients;
 }
 
 }
