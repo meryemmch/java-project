@@ -7,7 +7,7 @@ import src.main.java.model.User;
 
 public class UserManager implements UserOperations {
 
-    private static final String USER_FILE = "resources/users.csv"; // Path to user data file
+    private static final String USER_FILE = "resources/users.csv"; 
 
     // Method to load users from file
     public static List<User> loadUsers() {

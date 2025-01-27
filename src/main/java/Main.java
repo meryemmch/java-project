@@ -24,7 +24,6 @@ public class Main {
         // Start the user authentication menu
         userAuthenticationMenu(customerFilePath, orderFilePath, productFilePath, outputCustomerFilePath, outputOrderFilePath, outputProductFilePath);
         scanner.close();
-
     }
     
     // User authentication menu (sign-up, log-in, or exit)
