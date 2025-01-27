@@ -198,7 +198,7 @@ public class ReportGenerator {
                 htmlContent.append(String.format("<li>%s: %d customers</li>%n", entry.getKey(), entry.getValue()));
             }
             htmlContent.append("</ul>");
-            htmlContent.append("<p>Insights: ");
+            htmlContent.append("<h3>Insights:</h3> ");
             htmlContent.append("The data shows a higher engagement from Female and Other gender customers compared to Male customers. ");
             htmlContent.append("This suggests an opportunity to focus marketing and product offerings on these demographics while exploring reasons for lower Male engagement.");
             htmlContent.append("</p>");
@@ -231,7 +231,7 @@ public class ReportGenerator {
                 htmlContent.append(String.format("<li>%s: %d customers</li>%n", entry.getKey(), entry.getValue()));
             }
             htmlContent.append("</ul>");
-            htmlContent.append("<p>Insights: ");
+            htmlContent.append("<h3>Insights:</h3> ");
             htmlContent.append("Bangalore leads the customer count, followed closely by Pune. ");
             htmlContent.append("These cities could be prioritized for marketing campaigns, customer loyalty programs, and expanded services. ");
             htmlContent.append("Kolkata, Delhi, and Chennai also show significant engagement, indicating strong potential in metropolitan areas.");
@@ -239,6 +239,8 @@ public class ReportGenerator {
         } else {
             htmlContent.append("<p>No city distribution data available.</p>");
         }
+        htmlContent.append("<h3> Conclusion</h3>");
+        htmlContent.append("<p>The analysis highlights key trends in gender, age, and geographic distribution among customers. Opportunities include targeting high-potential cities, designing age-specific campaigns, and fostering inclusivity in marketing strategies. Future studies could delve deeper into customer preferences, behavior patterns, and product-specific demand to refine strategies and maximize engagement.</p>");       
     
         htmlContent.append("</body></html>");
     
@@ -318,6 +320,10 @@ public class ReportGenerator {
         htmlContent
                 .append("<li><strong>Dynamic Pricing:</strong> Use pricing strategies tailored to demand trends.</li>");
         htmlContent.append("</ul>");
+
+        htmlContent.append("<h3>Conclusion</h3>");
+        htmlContent.append("<p>The analysis provides actionable insights into product performance, highlighting opportunities to refine pricing strategies, focus on high-demand demographics, and expand profitable subcategories. Future efforts could include detailed analysis of customer feedback, cross-category purchase behavior, and market trends to refine business strategies further.</p>");
+
 
         htmlContent.append("</body></html>");
 
