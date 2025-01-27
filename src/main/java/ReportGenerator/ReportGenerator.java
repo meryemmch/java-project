@@ -37,7 +37,7 @@ public class ReportGenerator {
         Long worstReviewsCount = OrderDataProcessor.getWorstReviewsCount();
         Order highestOrder = OrderDataProcessor.getHighestOrder();
         Map<String, Double> maxDiscountByProduct = OrderDataProcessor.getMaxDiscountByProduct();
-         Map<String, Double> minDiscountByProduct=OrderDataProcessor.getMinDiscountByProduct();
+        Map<String, Double> minDiscountByProduct=OrderDataProcessor.getMinDiscountByProduct();
         Map<String, Double> monthlySales = OrderDataProcessor.getMonthlySales();
         Map<String, Double> avgRatingPerProduct=OrderDataProcessor.getAvgRatingPerProduct();
         String mostBoughtProduct=OrderDataProcessor.getMostBoughtProduct();
@@ -169,6 +169,10 @@ public class ReportGenerator {
             htmlContent.append("<p>No data available for monthly sales.</p>");
         }
 
+        htmlContent.append("<h3> insights</h3>");
+        htmlContent.append("<p>The dataset reveals consistent customer engagement across diverse payment methods. Reviews indicate a wide variation in customer satisfaction, emphasizing the need for quality improvements in low-rated products.</p>");
+        htmlContent.append("<h3> Conclusion</h3>");
+        htmlContent.append("<p>The analysis provides actionable insights into sales and customer behavior, emphasizing the importance of strategic promotions, tailored discount strategies, and enhanced customer satisfaction. Further efforts should explore customer feedback and cross-category behavior to fine-tune marketing approaches.</p>");
         htmlContent.append("</body></html>");
 
         // Write the generated HTML content to a file
