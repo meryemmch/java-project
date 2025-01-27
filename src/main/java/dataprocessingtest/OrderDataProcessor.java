@@ -142,37 +142,56 @@ public class OrderDataProcessor extends DataProcessor<Order> {
         }
 
         // Maximum discount by product
+        System.out.println("\nMaximum Discount By Product(TOP3)");
         this.maxDiscountByProduct = data.stream()
-                .collect(Collectors.groupingBy(Order::getProductId,
-                        Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparingDouble(Order::getDiscountAmount)),
-                                o -> o.map(Order::getDiscountAmount).orElse(0.0))));
-        System.out.println("\nMax Discount by Product: " + maxDiscountByProduct); // Debug output
+        .collect(Collectors.groupingBy(Order::getProductId,
+                Collectors.collectingAndThen(Collectors.maxBy(Comparator.comparingDouble(Order::getDiscountAmount)),
+                        o -> o.map(Order::getDiscountAmount).orElse(0.0))));
+        maxDiscountByProduct.entrySet().stream()
+        .limit(3)
+        .forEach(entry -> System.out.print("Product: " + entry.getKey() + ", Max Discount: " + entry.getValue() + "; "));
+
 
         // Minimum discount by product
+        System.out.println("\nMinimum Discount By Product(TOP3)");
         this.minDiscountByProduct = data.stream()
-                .collect(Collectors.groupingBy(Order::getProductId,
-                        Collectors.collectingAndThen(Collectors.minBy(Comparator.comparingDouble(Order::getDiscountAmount)),
-                                o -> o.map(Order::getDiscountAmount).orElse(0.0))));
-        System.out.println("Min Discount by Product: " + minDiscountByProduct); // Debug output
+        .collect(Collectors.groupingBy(Order::getProductId,
+                Collectors.collectingAndThen(Collectors.minBy(Comparator.comparingDouble(Order::getDiscountAmount)),
+                        o -> o.map(Order::getDiscountAmount).orElse(0.0))));
+        minDiscountByProduct.entrySet().stream()
+        .limit(3) 
+        .forEach(entry -> System.out.print("Product: " + entry.getKey() + ", Min Discount: " + entry.getValue() + "; "));
+        System.out.println("}");
+
 
         // Average rating by product
+        System.out.println("\nAverage rating by product(TOP3)");
         this.avgRatingPerProduct = data.stream()
-                .collect(Collectors.groupingBy(Order::getProductId, Collectors.averagingInt(Order::getReviewRating)));
-        System.out.println("Avg Rating Per Product: " + avgRatingPerProduct); // Debug output
+        .collect(Collectors.groupingBy(Order::getProductId, Collectors.averagingInt(Order::getReviewRating)));
+        avgRatingPerProduct.entrySet().stream()
+        .limit(3) // Limit the output to the first 10 entries
+        .forEach(entry -> System.out.print("Product: " + entry.getKey() + ", Avg Rating: " + entry.getValue() + "; "));
+        System.out.println("}");
+
 
         // Most frequently bought product
         this.mostBoughtProduct = data.stream()
                 .collect(Collectors.groupingBy(Order::getProductId, Collectors.summingInt(Order::getQuantity)))
                 .entrySet().stream().max(Map.Entry.comparingByValue())
                 .map(Map.Entry::getKey).orElse("No Product");
-        System.out.println("Most Bought Product: " + mostBoughtProduct); // Debug output
+        System.out.println("\nMost Bought Product: " + mostBoughtProduct); 
 
         // Mode of quantity for products
+        System.out.println("\nMode of quantity for products(TOP3)");
         this.modeQuantityByProduct = data.stream()
-                .collect(Collectors.groupingBy(Order::getProductId,
-                        Collectors.collectingAndThen(Collectors.groupingBy(Order::getQuantity, Collectors.counting()),
-                                m -> m.entrySet().stream().max(Map.Entry.comparingByValue()).get().getKey())));
-        System.out.println("Mode Quantity by Product: " + modeQuantityByProduct); // Debug output
+        .collect(Collectors.groupingBy(Order::getProductId,
+                Collectors.collectingAndThen(Collectors.groupingBy(Order::getQuantity, Collectors.counting()),
+                        m -> m.entrySet().stream().max(Map.Entry.comparingByValue()).get().getKey())));
+        modeQuantityByProduct.entrySet().stream()
+        .limit(3) 
+        .forEach(entry -> System.out.print("Product: " + entry.getKey() + ", Mode Quantity: " + entry.getValue() + "; "));
+        System.out.println("}");
+
 
         // Monthly sales
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
@@ -184,7 +203,7 @@ public class OrderDataProcessor extends DataProcessor<Order> {
                         return "Unknown";
                     }
                 }, Collectors.summingDouble(Order::getTotalAmount)));
-        System.out.println("Monthly Sales: " + monthlySales); // Debug output
+        System.out.println("\nMonthly Sales: " + monthlySales); // Debug output
 
         // Regression Analysis
         List<Double> quantities = data.stream().map(Order::getQuantity).mapToDouble(i -> i).boxed().collect(Collectors.toList());
@@ -223,6 +242,12 @@ public class OrderDataProcessor extends DataProcessor<Order> {
 
 public Map<String, Long> getOrdersByPaymentMethod() {
     return ordersByPaymentMethod;
+}
+public Map<String, Double> gettotalRevenueByProduct() {
+    return totalRevenueByProduct;
+}
+public Map<String, Long> getordersByStatus() {
+    return ordersByStatus;
 }
 
 public double getTotalRevenue() {
@@ -300,5 +325,6 @@ public double[] getShippingCostCoefficients() {
 public double[] getDiscountAmountCoefficients() {
     return discountAmountCoefficients;
 }
+
 
 }

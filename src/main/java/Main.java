@@ -11,7 +11,7 @@ import src.main.java.model.*;
 
 public class Main {
     private static Scanner scanner = new Scanner(System.in);
-
+    
     public static void main(String[] args) {
         // Define file paths for the data files
         String customerFilePath = "resources/customers.csv";
@@ -243,23 +243,28 @@ private static void productDataReport(List<product> productData, String outputPr
 };
 
 
-private static void askToGenerateReport(String dataType, Runnable reportGenerator, boolean isDataProcessed) {
-    if (!isDataProcessed) {
-        System.out.println("\nData is not yet processed for " + dataType + ". Skipping report generation.");
+private static void askToGenerateReport(String dataType, Runnable generateReportAction, boolean isDataAvailable) {
+    if (!isDataAvailable) {
+        System.out.println("\nNo data available to generate the report for " + dataType + ".");
         return;
     }
 
     Scanner scanner = new Scanner(System.in);
-    System.out.print("\nDo you want to generate the " + dataType + " data report? (yes/no): ");
-    String response = scanner.nextLine().trim().toLowerCase();
+    String choice;
+    do {
+        System.out.println("\nWould you like to generate a report for " + dataType + " data? (yes/no)");
+        choice = scanner.nextLine().trim().toLowerCase();
 
-    if (response.equals("yes")) {
-        reportGenerator.run();
-    } else if (response.equals("no")) {
-        System.out.println("\nSkipping " + dataType + " report generation.");
-    } else {
-        System.out.println("\nInvalid response. Skipping " + dataType + " report generation.");
-    }
+        if (choice.equals("yes")) {
+            System.out.println("\nGenerating " + dataType + " data report...");
+            generateReportAction.run(); // Execute the report generation action
+            break; // Return to the main menu
+        } else if (choice.equals("no")) {
+            System.out.println("\nSkipping report generation for " + dataType + " data.");
+            break; // Return to the main menu
+        } else {
+            System.out.println("\nInvalid choice. Please type 'yes' or 'no'.");
+        }
+    } while (true); // Loop until the user gives a valid input
 }
-
 }

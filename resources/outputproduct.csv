@@ -1,201 +1,201 @@
 ProductID,ProductName,Category,SubCategory,Brand,Price
-PROD_7972,Product_7972,Beauty,Microwave,BrandB,104.36
-PROD_9772,Product_9772,Home Appliances,Microwave,BrandB,1824.8
-PROD_8841,Product_8841,Books,Washing Machine,BrandA,268.02
-PROD_4482,Product_4482,Fashion,Fiction,BrandD,1497.75
-PROD_6452,Product_6452,Groceries,Laptop,BrandA,1043.81
-PROD_5688,Product_5688,Home Appliances,Accessories,BrandC,1613.26
-PROD_6020,Product_6020,Fashion,Academic,BrandB,659.0
-PROD_4916,Product_4916,Groceries,Beverages,BrandC,745.21
-PROD_6743,Product_6743,Beauty,Camera,BrandD,1394.38
-PROD_9868,Product_9868,Books,Laptop,BrandA,587.51
-PROD_3132,Product_3132,Electronics,Haircare,BrandA,291.93
-PROD_1529,Product_1529,Electronics,Non-Fiction,BrandC,1484.68
-PROD_2521,Product_2521,Electronics,Accessories,BrandA,558.43
-PROD_1319,Product_1319,Electronics,Makeup,BrandC,1410.95
-PROD_8281,Product_8281,Home Appliances,Fiction,BrandC,682.03
-PROD_6345,Product_6345,Fashion,Washing Machine,BrandA,938.36
-PROD_4233,Product_4233,Groceries,Skincare,BrandA,1852.67
-PROD_4845,Product_4845,Groceries,Camera,BrandA,100.52
-PROD_4403,Product_4403,Fashion,Skincare,BrandA,37.25
-PROD_5364,Product_5364,Fashion,Laptop,BrandC,996.6
-PROD_7899,Product_7899,Fashion,Snacks,BrandA,1233.77
-PROD_4662,Product_4662,Books,Accessories,BrandC,1927.16
-PROD_635,Product_635,Home Appliances,Haircare,BrandC,1559.55
-PROD_6591,Product_6591,Groceries,Footwear,BrandB,1859.75
-PROD_2183,Product_2183,Groceries,Mobile,BrandD,349.84
-PROD_6586,Product_6586,Books,Footwear,BrandB,1295.95
-PROD_9502,Product_9502,Groceries,Fiction,BrandD,1032.02
-PROD_6961,Product_6961,Fashion,Laptop,BrandB,947.01
-PROD_6461,Product_6461,Groceries,Beverages,BrandB,1721.75
-PROD_2509,Product_2509,Electronics,Makeup,BrandA,617.41
-PROD_565,Product_565,Groceries,Washing Machine,BrandD,1957.81
-PROD_1951,Product_1951,Groceries,Laptop,BrandD,336.36
-PROD_8298,Product_8298,Fashion,Microwave,BrandC,1760.25
-PROD_9879,Product_9879,Fashion,Washing Machine,BrandD,689.23
-PROD_1896,Product_1896,Beauty,Academic,BrandD,1118.21
-PROD_5111,Product_5111,Electronics,Snacks,BrandC,129.69
-PROD_1397,Product_1397,Electronics,Clothing,BrandA,1873.65
-PROD_6812,Product_6812,Groceries,Fiction,BrandA,570.6
-PROD_6195,Product_6195,Home Appliances,Beverages,BrandA,1500.73
-PROD_5924,Product_5924,Home Appliances,Daily Essentials,BrandC,1842.86
-PROD_5620,Product_5620,Fashion,Non-Fiction,BrandA,303.18
-PROD_4980,Product_4980,Fashion,Camera,BrandA,1326.68
-PROD_6298,Product_6298,Home Appliances,Makeup,BrandA,172.08
-PROD_2027,Product_2027,Electronics,Skincare,BrandD,1628.85
-PROD_8192,Product_8192,Fashion,Microwave,BrandC,490.17
-PROD_7883,Product_7883,Electronics,Daily Essentials,BrandA,1821.37
-PROD_1660,Product_1660,Groceries,Skincare,BrandD,1259.03
-PROD_6329,Product_6329,Beauty,Refrigerator,BrandB,1876.77
-PROD_137,Product_137,Home Appliances,Washing Machine,BrandC,1754.01
-PROD_228,Product_228,Electronics,Academic,BrandD,1283.92
-PROD_2064,Product_2064,Books,Makeup,BrandD,1747.72
-PROD_9963,Product_9963,Groceries,Beverages,BrandD,880.02
+PROD_443,Product_443,Beauty,Refrigerator,BrandC,81.84
+PROD_5285,Product_5285,Groceries,Skincare,BrandA,1090.26
+PROD_8806,Product_8806,Home Appliances,Makeup,BrandD,599.2
 PROD_6162,Product_6162,Beauty,Makeup,BrandB,910.17
-PROD_5406,Product_5406,Electronics,Fiction,BrandB,844.52
-PROD_3584,Product_3584,Groceries,Mobile,BrandB,1721.84
-PROD_6752,Product_6752,Books,Accessories,BrandA,1775.76
-PROD_481,Product_481,Beauty,Laptop,BrandB,1497.5
-PROD_6629,Product_6629,Fashion,Skincare,BrandB,1273.83
-PROD_8164,Product_8164,Books,Skincare,BrandC,1718.36
-PROD_4918,Product_4918,Groceries,Haircare,BrandC,1706.53
-PROD_1940,Product_1940,Books,Daily Essentials,BrandD,1423.83
-PROD_1512,Product_1512,Groceries,Refrigerator,BrandA,180.79
-PROD_2688,Product_2688,Beauty,Snacks,BrandC,1337.72
-PROD_8815,Product_8815,Books,Academic,BrandC,1196.78
-PROD_997,Product_997,Home Appliances,Fiction,BrandC,428.14
-PROD_1486,Product_1486,Groceries,Clothing,BrandC,1048.44
-PROD_3005,Product_3005,Beauty,Haircare,BrandD,1220.67
-PROD_5835,Product_5835,Books,Camera,BrandB,1358.39
-PROD_6745,Product_6745,Books,Haircare,BrandA,96.39
-PROD_3933,Product_3933,Fashion,Laptop,BrandC,1459.6
-PROD_8022,Product_8022,Beauty,Snacks,BrandA,1602.6
-PROD_8366,Product_8366,Home Appliances,Haircare,BrandA,572.47
-PROD_9981,Product_9981,Fashion,Clothing,BrandB,1580.92
-PROD_1691,Product_1691,Fashion,Makeup,BrandD,1291.04
-PROD_2005,Product_2005,Books,Snacks,BrandD,1038.1
-PROD_4996,Product_4996,Home Appliances,Beverages,BrandD,1441.07
-PROD_868,Product_868,Fashion,Daily Essentials,BrandC,542.8
-PROD_3520,Product_3520,Fashion,Footwear,BrandD,616.96
-PROD_7034,Product_7034,Electronics,Snacks,BrandC,160.14
-PROD_8273,Product_8273,Home Appliances,Non-Fiction,BrandA,669.31
-PROD_9975,Product_9975,Beauty,Fiction,BrandC,1234.6
-PROD_2944,Product_2944,Groceries,Beverages,BrandA,1591.62
-PROD_8904,Product_8904,Fashion,Haircare,BrandA,1013.77
-PROD_4739,Product_4739,Electronics,Non-Fiction,BrandB,1887.59
-PROD_7978,Product_7978,Groceries,Laptop,BrandD,377.59
-PROD_1772,Product_1772,Fashion,Washing Machine,BrandA,1460.9
-PROD_8372,Product_8372,Home Appliances,Beverages,BrandB,1877.16
-PROD_7835,Product_7835,Beauty,Laptop,BrandB,1406.04
-PROD_324,Product_324,Home Appliances,Makeup,BrandD,896.82
-PROD_138,Product_138,Groceries,Washing Machine,BrandB,1136.87
-PROD_6957,Product_6957,Home Appliances,Beverages,BrandA,359.51
-PROD_3028,Product_3028,Groceries,Skincare,BrandA,1552.26
-PROD_811,Product_811,Fashion,Refrigerator,BrandD,1032.78
-PROD_2892,Product_2892,Fashion,Mobile,BrandD,1654.95
-PROD_4985,Product_4985,Groceries,Footwear,BrandD,880.96
-PROD_8474,Product_8474,Groceries,Microwave,BrandB,1211.82
-PROD_4738,Product_4738,Books,Mobile,BrandD,499.03
-PROD_6891,Product_6891,Home Appliances,Microwave,BrandA,1767.52
+PROD_8907,Product_8907,Home Appliances,Mobile,BrandD,20.05
+PROD_5111,Product_5111,Electronics,Snacks,BrandC,129.69
+PROD_674,Product_674,Groceries,Beverages,BrandC,1146.7
+PROD_2334,Product_2334,Groceries,Washing Machine,BrandA,1547.65
+PROD_588,Product_588,Groceries,Daily Essentials,BrandC,1279.96
+PROD_9334,Product_9334,Fashion,Beverages,BrandB,905.44
+PROD_1379,Product_1379,Groceries,Refrigerator,BrandC,612.99
+PROD_5931,Product_5931,Electronics,Non-Fiction,BrandD,320.65
+PROD_1318,Product_1318,Books,Microwave,BrandB,185.19
+PROD_7285,Product_7285,Electronics,Microwave,BrandB,832.05
+PROD_6509,Product_6509,Groceries,Daily Essentials,BrandD,1393.1
+PROD_7474,Product_7474,Books,Daily Essentials,BrandD,22.33
+PROD_5293,Product_5293,Home Appliances,Washing Machine,BrandB,842.49
+PROD_6721,Product_6721,Electronics,Makeup,BrandB,1669.97
+PROD_1233,Product_1233,Books,Non-Fiction,BrandA,370.84
+PROD_3454,Product_3454,Home Appliances,Camera,BrandD,1668.81
+PROD_6247,Product_6247,Groceries,Mobile,BrandD,1636.83
+PROD_8355,Product_8355,Groceries,Laptop,BrandD,1074.47
+PROD_2704,Product_2704,Beauty,Footwear,BrandD,1508.16
+PROD_1932,Product_1932,Home Appliances,Footwear,BrandB,162.58
+PROD_6371,Product_6371,Books,Footwear,BrandB,907.34
+PROD_4509,Product_4509,Fashion,Daily Essentials,BrandB,696.54
+PROD_9201,Product_9201,Books,Footwear,BrandD,1555.2
+PROD_8709,Product_8709,Books,Accessories,BrandC,252.67
+PROD_9086,Product_9086,Electronics,Mobile,BrandB,1378.76
+PROD_2474,Product_2474,Beauty,Non-Fiction,BrandD,39.54
+PROD_8475,Product_8475,Beauty,Skincare,BrandD,1420.75
+PROD_8312,Product_8312,Groceries,Footwear,BrandD,347.21
+PROD_6854,Product_6854,Beauty,Mobile,BrandD,1554.37
+PROD_9388,Product_9388,Home Appliances,Academic,BrandC,1003.41
+PROD_8268,Product_8268,Electronics,Daily Essentials,BrandD,1634.77
+PROD_2783,Product_2783,Groceries,Academic,BrandD,1648.46
+PROD_7670,Product_7670,Fashion,Accessories,BrandC,826.21
+PROD_6835,Product_6835,Books,Refrigerator,BrandD,1626.64
+PROD_1732,Product_1732,Groceries,Accessories,BrandC,437.5
+PROD_5910,Product_5910,Books,Non-Fiction,BrandB,1775.39
+PROD_4168,Product_4168,Beauty,Refrigerator,BrandA,278.01
+PROD_2450,Product_2450,Beauty,Accessories,BrandC,204.31
+PROD_3381,Product_3381,Groceries,Accessories,BrandD,1617.14
+PROD_4838,Product_4838,Fashion,Haircare,BrandA,691.49
+PROD_7433,Product_7433,Beauty,Refrigerator,BrandD,1843.96
+PROD_3835,Product_3835,Groceries,Laptop,BrandB,1627.67
+PROD_4071,Product_4071,Electronics,Non-Fiction,BrandA,1880.13
 PROD_5165,Product_5165,Home Appliances,Microwave,BrandA,1994.78
-PROD_8950,Product_8950,Fashion,Accessories,BrandC,1460.4
-PROD_7070,Product_7070,Home Appliances,Clothing,BrandA,1194.67
-PROD_3295,Product_3295,Fashion,Makeup,BrandC,263.91
-PROD_1004,Product_1004,Electronics,Daily Essentials,BrandD,1481.1
-PROD_6862,Product_6862,Beauty,Accessories,BrandB,1559.32
-PROD_5288,Product_5288,Electronics,Refrigerator,BrandA,1811.47
-PROD_2570,Product_2570,Electronics,Laptop,BrandD,980.24
-PROD_6271,Product_6271,Electronics,Washing Machine,BrandC,1906.98
-PROD_1136,Product_1136,Fashion,Academic,BrandD,558.93
-PROD_6567,Product_6567,Beauty,Mobile,BrandD,434.92
-PROD_9036,Product_9036,Home Appliances,Daily Essentials,BrandD,804.59
-PROD_4814,Product_4814,Groceries,Clothing,BrandB,1646.23
-PROD_4293,Product_4293,Electronics,Skincare,BrandA,1662.79
-PROD_5458,Product_5458,Beauty,Makeup,BrandB,908.45
-PROD_9615,Product_9615,Electronics,Washing Machine,BrandB,1689.6
-PROD_7437,Product_7437,Electronics,Accessories,BrandA,798.37
-PROD_3267,Product_3267,Electronics,Accessories,BrandD,927.39
-PROD_882,Product_882,Electronics,Skincare,BrandB,839.08
-PROD_6149,Product_6149,Home Appliances,Makeup,BrandC,1163.46
-PROD_2961,Product_2961,Books,Fiction,BrandC,1326.76
-PROD_1256,Product_1256,Groceries,Clothing,BrandA,1558.27
-PROD_9336,Product_9336,Books,Accessories,BrandB,342.4
-PROD_5476,Product_5476,Fashion,Fiction,BrandA,596.63
-PROD_7889,Product_7889,Beauty,Beverages,BrandA,854.33
-PROD_3600,Product_3600,Groceries,Daily Essentials,BrandD,887.74
-PROD_3851,Product_3851,Home Appliances,Academic,BrandD,1866.95
-PROD_1910,Product_1910,Beauty,Accessories,BrandA,311.37
-PROD_6545,Product_6545,Groceries,Footwear,BrandD,180.4
-PROD_4501,Product_4501,Beauty,Beverages,BrandD,1996.16
-PROD_6761,Product_6761,Beauty,Skincare,BrandA,681.94
-PROD_5652,Product_5652,Home Appliances,Washing Machine,BrandB,313.25
-PROD_4302,Product_4302,Beauty,Skincare,BrandC,1961.46
-PROD_7675,Product_7675,Fashion,Haircare,BrandD,550.97
-PROD_3479,Product_3479,Beauty,Non-Fiction,BrandC,1607.36
-PROD_5145,Product_5145,Fashion,Daily Essentials,BrandC,322.41
-PROD_4506,Product_4506,Home Appliances,Haircare,BrandC,97.2
-PROD_7309,Product_7309,Books,Footwear,BrandB,392.44
-PROD_6648,Product_6648,Electronics,Accessories,BrandB,1482.05
-PROD_5765,Product_5765,Books,Washing Machine,BrandD,451.64
+PROD_5541,Product_5541,Groceries,Refrigerator,BrandD,800.91
+PROD_7039,Product_7039,Beauty,Refrigerator,BrandD,452.44
+PROD_5663,Product_5663,Books,Washing Machine,BrandD,1188.21
+PROD_7677,Product_7677,Beauty,Laptop,BrandB,22.19
+PROD_9182,Product_9182,Home Appliances,Microwave,BrandC,686.17
+PROD_8992,Product_8992,Groceries,Academic,BrandD,1887.15
+PROD_3691,Product_3691,Fashion,Footwear,BrandC,1980.35
+PROD_3243,Product_3243,Electronics,Mobile,BrandC,145.72
+PROD_4448,Product_4448,Home Appliances,Fiction,BrandD,409.38
 PROD_8997,Product_8997,Home Appliances,Microwave,BrandA,1780.01
-PROD_4667,Product_4667,Books,Daily Essentials,BrandB,1121.06
-PROD_2896,Product_2896,Electronics,Camera,BrandC,1823.55
-PROD_5639,Product_5639,Home Appliances,Clothing,BrandC,1619.84
-PROD_3907,Product_3907,Books,Non-Fiction,BrandD,1130.27
-PROD_9780,Product_9780,Electronics,Fiction,BrandB,1456.68
-PROD_5702,Product_5702,Books,Washing Machine,BrandC,1327.63
-PROD_5239,Product_5239,Beauty,Mobile,BrandC,204.47
-PROD_4805,Product_4805,Home Appliances,Non-Fiction,BrandB,926.54
-PROD_1527,Product_1527,Books,Footwear,BrandC,943.65
-PROD_6005,Product_6005,Groceries,Beverages,BrandA,1135.99
-PROD_4034,Product_4034,Home Appliances,Accessories,BrandB,739.85
-PROD_2193,Product_2193,Beauty,Beverages,BrandB,1270.37
-PROD_4706,Product_4706,Beauty,Beverages,BrandA,478.53
-PROD_403,Product_403,Groceries,Accessories,BrandD,1359.44
-PROD_76,Product_76,Groceries,Haircare,BrandD,412.86
-PROD_6772,Product_6772,Home Appliances,Microwave,BrandB,873.81
-PROD_3559,Product_3559,Books,Haircare,BrandA,639.16
-PROD_6692,Product_6692,Fashion,Makeup,BrandB,1238.01
-PROD_2679,Product_2679,Fashion,Non-Fiction,BrandD,1187.13
-PROD_2683,Product_2683,Groceries,Microwave,BrandB,414.64
-PROD_3021,Product_3021,Groceries,Fiction,BrandD,167.04
-PROD_5730,Product_5730,Beauty,Haircare,BrandD,425.9
-PROD_744,Product_744,Fashion,Refrigerator,BrandC,579.34
-PROD_3684,Product_3684,Books,Fiction,BrandB,1864.15
-PROD_257,Product_257,Groceries,Mobile,BrandC,1762.47
-PROD_3353,Product_3353,Fashion,Daily Essentials,BrandA,688.5
-PROD_4940,Product_4940,Books,Fiction,BrandA,1645.17
-PROD_7035,Product_7035,Beauty,Clothing,BrandC,91.83
-PROD_7484,Product_7484,Beauty,Haircare,BrandD,767.59
-PROD_2796,Product_2796,Books,Washing Machine,BrandB,521.68
-PROD_6969,Product_6969,Fashion,Skincare,BrandD,1435.0
-PROD_2612,Product_2612,Fashion,Footwear,BrandB,1617.2
-PROD_7747,Product_7747,Groceries,Makeup,BrandB,361.37
-PROD_402,Product_402,Beauty,Camera,BrandA,1977.99
-PROD_3012,Product_3012,Home Appliances,Beverages,BrandD,1269.91
-PROD_8414,Product_8414,Groceries,Makeup,BrandD,608.45
-PROD_7366,Product_7366,Groceries,Beverages,BrandA,1467.96
-PROD_9443,Product_9443,Electronics,Haircare,BrandA,1466.35
-PROD_4935,Product_4935,Electronics,Laptop,BrandD,168.19
-PROD_6067,Product_6067,Home Appliances,Snacks,BrandD,1474.95
-PROD_3763,Product_3763,Electronics,Makeup,BrandB,1120.32
-PROD_6858,Product_6858,Books,Beverages,BrandD,1968.67
-PROD_6741,Product_6741,Beauty,Mobile,BrandD,83.63
-PROD_2696,Product_2696,Home Appliances,Microwave,BrandD,1905.64
-PROD_8554,Product_8554,Electronics,Academic,BrandD,1049.49
-PROD_4889,Product_4889,Fashion,Snacks,BrandA,1247.48
-PROD_4417,Product_4417,Fashion,Snacks,BrandA,1327.49
-PROD_9113,Product_9113,Groceries,Accessories,BrandC,1659.3
-PROD_781,Product_781,Beauty,Clothing,BrandA,1443.08
-PROD_9551,Product_9551,Groceries,Laptop,BrandC,1690.97
-PROD_2092,Product_2092,Groceries,Haircare,BrandD,351.47
-PROD_774,Product_774,Electronics,Daily Essentials,BrandB,459.82
-PROD_8373,Product_8373,Groceries,Snacks,BrandB,505.77
-PROD_2648,Product_2648,Home Appliances,Microwave,BrandA,1244.75
-PROD_6531,Product_6531,Fashion,Haircare,BrandC,1675.51
-PROD_9960,Product_9960,Groceries,Mobile,BrandA,865.48
-PROD_2760,Product_2760,Groceries,Washing Machine,BrandC,445.5
-PROD_3276,Product_3276,Beauty,Skincare,BrandA,824.05
-PROD_9854,Product_9854,Groceries,Makeup,BrandC,343.47
-PROD_6500,Product_6500,Home Appliances,Microwave,BrandB,1762.8
-PROD_3949,Product_3949,Beauty,Clothing,BrandD,1079.15
+PROD_907,Product_907,Fashion,Skincare,BrandD,967.23
+PROD_4196,Product_4196,Groceries,Makeup,BrandB,858.95
+PROD_9186,Product_9186,Beauty,Microwave,BrandB,187.43
+PROD_5422,Product_5422,Books,Accessories,BrandC,1132.0
+PROD_6478,Product_6478,Home Appliances,Laptop,BrandB,1088.0
+PROD_3363,Product_3363,Beauty,Haircare,BrandB,647.09
+PROD_6369,Product_6369,Books,Fiction,BrandC,1691.8
+PROD_8657,Product_8657,Beauty,Clothing,BrandC,707.64
+PROD_9234,Product_9234,Fashion,Laptop,BrandD,1989.62
+PROD_629,Product_629,Electronics,Accessories,BrandC,277.0
+PROD_1422,Product_1422,Beauty,Footwear,BrandD,293.41
+PROD_8725,Product_8725,Home Appliances,Accessories,BrandD,1806.9
+PROD_5586,Product_5586,Home Appliances,Makeup,BrandA,392.95
+PROD_7095,Product_7095,Home Appliances,Makeup,BrandA,615.51
+PROD_1597,Product_1597,Beauty,Haircare,BrandD,1107.53
+PROD_2943,Product_2943,Home Appliances,Camera,BrandC,977.51
+PROD_277,Product_277,Books,Haircare,BrandB,1631.97
+PROD_2995,Product_2995,Beauty,Clothing,BrandC,1974.85
+PROD_8750,Product_8750,Beauty,Daily Essentials,BrandD,1848.31
+PROD_381,Product_381,Books,Skincare,BrandB,279.56
+PROD_4868,Product_4868,Groceries,Laptop,BrandD,1162.17
+PROD_3956,Product_3956,Books,Clothing,BrandD,1942.56
+PROD_7592,Product_7592,Groceries,Fiction,BrandD,63.0
+PROD_9366,Product_9366,Home Appliances,Daily Essentials,BrandC,1517.7
+PROD_6212,Product_6212,Fashion,Refrigerator,BrandD,1143.95
+PROD_8687,Product_8687,Fashion,Laptop,BrandC,721.33
+PROD_8208,Product_8208,Beauty,Skincare,BrandB,1050.19
+PROD_9257,Product_9257,Home Appliances,Snacks,BrandA,374.41
+PROD_1639,Product_1639,Books,Makeup,BrandD,1988.85
+PROD_8602,Product_8602,Groceries,Academic,BrandB,1366.01
+PROD_686,Product_686,Electronics,Camera,BrandD,1012.15
+PROD_8636,Product_8636,Beauty,Microwave,BrandD,685.41
+PROD_7698,Product_7698,Books,Skincare,BrandA,1294.45
+PROD_7989,Product_7989,Beauty,Academic,BrandA,567.26
+PROD_7938,Product_7938,Fashion,Laptop,BrandD,1560.1
+PROD_874,Product_874,Electronics,Makeup,BrandB,202.53
+PROD_3701,Product_3701,Groceries,Laptop,BrandA,940.74
+PROD_4792,Product_4792,Groceries,Makeup,BrandC,506.88
+PROD_6810,Product_6810,Home Appliances,Camera,BrandA,1752.66
+PROD_2689,Product_2689,Fashion,Footwear,BrandD,686.15
+PROD_7942,Product_7942,Fashion,Microwave,BrandC,1439.14
+PROD_4386,Product_4386,Electronics,Academic,BrandA,1397.44
+PROD_6150,Product_6150,Groceries,Mobile,BrandB,1454.44
+PROD_6000,Product_6000,Beauty,Microwave,BrandA,1519.09
+PROD_2980,Product_2980,Groceries,Microwave,BrandD,1078.97
+PROD_4766,Product_4766,Electronics,Accessories,BrandA,685.25
+PROD_7859,Product_7859,Books,Footwear,BrandA,772.42
+PROD_3575,Product_3575,Fashion,Snacks,BrandA,416.47
+PROD_2325,Product_2325,Fashion,Footwear,BrandB,1345.28
+PROD_2960,Product_2960,Home Appliances,Makeup,BrandC,1123.89
+PROD_9793,Product_9793,Beauty,Fiction,BrandA,1384.19
+PROD_3754,Product_3754,Books,Makeup,BrandC,774.6
+PROD_92,Product_92,Electronics,Refrigerator,BrandB,1797.19
+PROD_7522,Product_7522,Beauty,Clothing,BrandA,470.62
+PROD_6363,Product_6363,Fashion,Non-Fiction,BrandB,1582.48
+PROD_995,Product_995,Home Appliances,Non-Fiction,BrandC,1551.81
+PROD_8823,Product_8823,Home Appliances,Non-Fiction,BrandA,1316.36
+PROD_5923,Product_5923,Books,Snacks,BrandB,1114.12
+PROD_2144,Product_2144,Home Appliances,Washing Machine,BrandA,1770.54
+PROD_4131,Product_4131,Groceries,Accessories,BrandA,895.84
+PROD_5506,Product_5506,Books,Footwear,BrandC,1154.74
+PROD_6537,Product_6537,Beauty,Makeup,BrandB,1516.04
+PROD_54,Product_54,Groceries,Footwear,BrandA,230.12
+PROD_3987,Product_3987,Home Appliances,Snacks,BrandD,1407.55
+PROD_9565,Product_9565,Fashion,Academic,BrandA,726.94
+PROD_6341,Product_6341,Electronics,Clothing,BrandA,1449.8
+PROD_1620,Product_1620,Electronics,Haircare,BrandC,1735.69
+PROD_3321,Product_3321,Home Appliances,Accessories,BrandA,1769.06
+PROD_3597,Product_3597,Fashion,Daily Essentials,BrandA,933.6
+PROD_8542,Product_8542,Electronics,Clothing,BrandA,1127.68
+PROD_7379,Product_7379,Books,Laptop,BrandB,801.56
+PROD_427,Product_427,Home Appliances,Daily Essentials,BrandD,1609.53
+PROD_8254,Product_8254,Fashion,Beverages,BrandB,1743.18
+PROD_1319,Product_1319,Electronics,Makeup,BrandC,1410.95
+PROD_3456,Product_3456,Electronics,Skincare,BrandA,1469.46
+PROD_1508,Product_1508,Beauty,Microwave,BrandA,1396.69
+PROD_3507,Product_3507,Beauty,Daily Essentials,BrandC,1940.98
+PROD_2528,Product_2528,Beauty,Fiction,BrandB,1384.44
+PROD_1287,Product_1287,Beauty,Accessories,BrandA,1010.77
+PROD_9477,Product_9477,Electronics,Mobile,BrandC,175.59
+PROD_772,Product_772,Fashion,Accessories,BrandB,528.68
+PROD_1054,Product_1054,Home Appliances,Mobile,BrandD,1428.38
+PROD_6282,Product_6282,Beauty,Academic,BrandA,956.22
+PROD_1563,Product_1563,Electronics,Clothing,BrandC,1763.79
+PROD_6913,Product_6913,Beauty,Academic,BrandA,1441.69
+PROD_4850,Product_4850,Electronics,Skincare,BrandC,1961.99
+PROD_9375,Product_9375,Groceries,Academic,BrandB,454.32
+PROD_2514,Product_2514,Beauty,Refrigerator,BrandC,1843.84
+PROD_5354,Product_5354,Home Appliances,Laptop,BrandA,1626.65
+PROD_1453,Product_1453,Beauty,Accessories,BrandA,1311.44
+PROD_9839,Product_9839,Books,Non-Fiction,BrandC,79.05
+PROD_1491,Product_1491,Home Appliances,Skincare,BrandB,827.02
+PROD_7455,Product_7455,Beauty,Footwear,BrandC,1518.02
+PROD_4992,Product_4992,Groceries,Microwave,BrandB,528.61
+PROD_404,Product_404,Books,Haircare,BrandC,1881.87
+PROD_4084,Product_4084,Groceries,Skincare,BrandB,236.78
+PROD_6186,Product_6186,Electronics,Mobile,BrandB,1734.62
+PROD_2146,Product_2146,Groceries,Non-Fiction,BrandB,1930.15
+PROD_2869,Product_2869,Beauty,Mobile,BrandA,1971.37
+PROD_8959,Product_8959,Groceries,Non-Fiction,BrandB,850.36
+PROD_2766,Product_2766,Home Appliances,Camera,BrandA,600.61
+PROD_4055,Product_4055,Groceries,Fiction,BrandC,1468.29
+PROD_2999,Product_2999,Electronics,Refrigerator,BrandA,1147.02
+PROD_3197,Product_3197,Electronics,Mobile,BrandB,168.91
+PROD_4455,Product_4455,Home Appliances,Academic,BrandC,1733.35
+PROD_8445,Product_8445,Electronics,Skincare,BrandB,1056.8
+PROD_7283,Product_7283,Groceries,Fiction,BrandC,1819.26
+PROD_8868,Product_8868,Electronics,Fiction,BrandC,461.87
+PROD_7654,Product_7654,Fashion,Accessories,BrandD,1235.82
+PROD_9438,Product_9438,Fashion,Refrigerator,BrandB,399.44
+PROD_1537,Product_1537,Books,Camera,BrandA,343.8
+PROD_6257,Product_6257,Beauty,Clothing,BrandB,1928.38
+PROD_2200,Product_2200,Electronics,Refrigerator,BrandB,1993.42
+PROD_1444,Product_1444,Fashion,Daily Essentials,BrandA,642.75
+PROD_4008,Product_4008,Groceries,Accessories,BrandA,1419.96
+PROD_1534,Product_1534,Groceries,Academic,BrandC,1221.39
+PROD_8885,Product_8885,Beauty,Non-Fiction,BrandB,1678.01
+PROD_648,Product_648,Electronics,Haircare,BrandB,842.76
+PROD_4668,Product_4668,Beauty,Beverages,BrandB,1221.21
+PROD_1117,Product_1117,Fashion,Haircare,BrandD,927.15
+PROD_2242,Product_2242,Home Appliances,Washing Machine,BrandA,1535.07
+PROD_9820,Product_9820,Electronics,Accessories,BrandC,1640.39
+PROD_6065,Product_6065,Beauty,Camera,BrandD,488.77
+PROD_9410,Product_9410,Electronics,Daily Essentials,BrandB,250.95
+PROD_7536,Product_7536,Home Appliances,Beverages,BrandA,1689.98
+PROD_4601,Product_4601,Books,Accessories,BrandB,1557.23
+PROD_4079,Product_4079,Fashion,Clothing,BrandC,924.96
+PROD_2765,Product_2765,Electronics,Clothing,BrandB,43.78
+PROD_1877,Product_1877,Groceries,Snacks,BrandD,842.01
+PROD_893,Product_893,Home Appliances,Laptop,BrandB,542.41
+PROD_7782,Product_7782,Groceries,Clothing,BrandB,1362.82
+PROD_9142,Product_9142,Beauty,Fiction,BrandB,35.02
+PROD_3584,Product_3584,Groceries,Mobile,BrandB,1721.84
+PROD_7750,Product_7750,Books,Accessories,BrandD,1267.05
+PROD_4456,Product_4456,Books,Refrigerator,BrandD,573.56
+PROD_4070,Product_4070,Home Appliances,Daily Essentials,BrandA,35.53
+PROD_389,Product_389,Electronics,Non-Fiction,BrandD,301.16
+PROD_1385,Product_1385,Fashion,Refrigerator,BrandD,1116.5
+PROD_2442,Product_2442,Fashion,Fiction,BrandA,1430.1
+PROD_4324,Product_4324,Fashion,Footwear,BrandB,1582.98
+PROD_1845,Product_1845,Beauty,Washing Machine,BrandA,578.33
+PROD_5214,Product_5214,Fashion,Snacks,BrandB,571.75
