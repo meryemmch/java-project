@@ -354,22 +354,6 @@ public class ReportGenerator {
         }
         htmlContent.append("</ul>");
 
-        htmlContent.append("<h2>Insights and Recommendations</h2>");
-        htmlContent.append("<ul>");
-        htmlContent.append(
-                "<li><strong>Targeted Promotions:</strong> Focus on high-demand categories with discounts for younger demographics.</li>");
-        htmlContent.append(
-                "<li><strong>Luxury Market Focus:</strong> Develop strategies to target premium customers in categories like Beauty.</li>");
-        htmlContent
-                .append("<li><strong>Dynamic Pricing:</strong> Use pricing strategies tailored to demand trends.</li>");
-        htmlContent.append("</ul>");
-
-        htmlContent.append("<h3>Conclusion</h3>");
-        htmlContent.append("<p>The analysis provides actionable insights into product performance, highlighting opportunities to refine pricing strategies, focus on high-demand demographics, and expand profitable subcategories. Future efforts could include detailed analysis of customer feedback, cross-category purchase behavior, and market trends to refine business strategies further.</p>");
-
-
-        htmlContent.append("</body></html>");
-
         // Product-related statistics
         
         // Calculate mean and standard deviation for product prices
@@ -400,6 +384,22 @@ public class ReportGenerator {
                                 priceMap.get("Cheapest"), priceMap.get("Most Expensive"))));
         htmlContent.append("</ul></li>");
         htmlContent.append("</ul>");
+
+        htmlContent.append("<h2>Insights and Recommendations</h2>");
+        htmlContent.append("<ul>");
+        htmlContent.append(
+                "<li><strong>Targeted Promotions:</strong> Focus on high-demand categories with discounts for younger demographics.</li>");
+        htmlContent.append(
+                "<li><strong>Luxury Market Focus:</strong> Develop strategies to target premium customers in categories like Beauty.</li>");
+        htmlContent
+                .append("<li><strong>Dynamic Pricing:</strong> Use pricing strategies tailored to demand trends.</li>");
+        htmlContent.append("</ul>");
+
+        htmlContent.append("<h3>Conclusion</h3>");
+        htmlContent.append("<p>The analysis provides actionable insights into product performance, highlighting opportunities to refine pricing strategies, focus on high-demand demographics, and expand profitable subcategories. Future efforts could include detailed analysis of customer feedback, cross-category purchase behavior, and market trends to refine business strategies further.</p>");
+
+
+        htmlContent.append("</body></html>");
 
         // Write the HTML report to a file
         try (FileWriter writer = new FileWriter("product_data_analysis_report.html")) {
