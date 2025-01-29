@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-import src.main.java.dataprocessingtest.*;
+import src.main.java.dataprocessing.*;
 import src.main.java.model.*;
 
 public class ReportGenerator {

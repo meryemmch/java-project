@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Scanner;
 import src.main.java.userManager.*;
 import src.main.java.ReportGenerator.ReportGenerator;
-import src.main.java.dataprocessingtest.CustomerDataProcessor;
-import src.main.java.dataprocessingtest.OrderDataProcessor;
-import src.main.java.dataprocessingtest.ProductDataProcessor;
+import src.main.java.dataprocessing.CustomerDataProcessor;
+import src.main.java.dataprocessing.OrderDataProcessor;
+import src.main.java.dataprocessing.ProductDataProcessor;
 import src.main.java.model.*;
 
 public class Main {
