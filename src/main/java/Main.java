@@ -10,26 +10,24 @@ import src.main.java.dataprocessing.ProductDataProcessor;
 import src.main.java.model.*;
 
 public class Main {
-    private static Scanner scanner = new Scanner(System.in);
+    
     
     public static void main(String[] args) {
-        // Define file paths for the data files
         String customerFilePath = "resources/customers.csv";
         String orderFilePath = "resources/order.csv";
         String productFilePath = "resources/products.csv";
         String outputCustomerFilePath = "resources/outputcustomer.csv"; // File path for storing processed customer data
         String outputOrderFilePath = "resources/outputorder.csv";
         String outputProductFilePath = "resources/outputproduct.csv";
-        
+        Scanner scanner = new Scanner(System.in);
         // Start the user authentication menu
-        userAuthenticationMenu(customerFilePath, orderFilePath, productFilePath, outputCustomerFilePath, outputOrderFilePath, outputProductFilePath);
+        userAuthenticationMenu(scanner,customerFilePath, orderFilePath, productFilePath, outputCustomerFilePath, outputOrderFilePath, outputProductFilePath);
         scanner.close();
     }
     
     // User authentication menu (sign-up, log-in, or exit)
-    private static void userAuthenticationMenu(String customerFilePath, String orderFilePath, String productFilePath,
+    private static void userAuthenticationMenu(Scanner scanner,String customerFilePath, String orderFilePath, String productFilePath,
                                                String outputCustomerFilePath, String outputOrderFilePath, String outputProductFilePath) {
-        Scanner scanner = new Scanner(System.in);
         
         while (true) {
             System.out.println("1. Sign Up");
@@ -50,7 +48,7 @@ public class Main {
                     // Log in process
                     if (userManager.login()) {
                         System.out.println("\nLogin successful!");
-                        dataManagementMenu(customerFilePath, orderFilePath, productFilePath, outputCustomerFilePath, outputOrderFilePath, outputProductFilePath);
+                        dataManagementMenu(scanner,customerFilePath, orderFilePath, productFilePath, outputCustomerFilePath, outputOrderFilePath, outputProductFilePath);
                     } else {
                         System.out.println("\nLogin failed. Try again.");
                     }
@@ -156,9 +154,8 @@ private static List<product> processAndStoreProductData(String productFilePath, 
     return productData; // Return the processed product data
 }
 
-   private static void dataManagementMenu(String customerFilePath, String orderFilePath, String productFilePath,
+   private static void dataManagementMenu(Scanner scanner,String customerFilePath, String orderFilePath, String productFilePath,
                                        String outputCustomerFilePath, String outputOrderFilePath, String outputProductFilePath) {
-    Scanner scanner = new Scanner(System.in);
 
     // Declare the data variables as final
     final List<Customer>[] customerData = new List[]{null};
@@ -181,35 +178,35 @@ private static List<product> processAndStoreProductData(String productFilePath, 
                 if (customerData[0] == null) {
                     customerData[0] = processAndStoreCustomerData(customerFilePath, outputCustomerFilePath);
                 }
-                askToGenerateReport("customer", () -> customerDataReport(customerData[0], outputCustomerFilePath), customerData[0] != null);
+                askToGenerateReport(scanner,"customer", () -> customerDataReport(customerData[0], outputCustomerFilePath), customerData[0] != null);
                 break;
             case 2:
                 if (productData[0] == null) {
                     productData[0] = processAndStoreProductData(productFilePath, outputProductFilePath);
                 }
-                askToGenerateReport("product", () -> productDataReport(productData[0], outputProductFilePath), productData[0] != null);
+                askToGenerateReport(scanner,"product", () -> productDataReport(productData[0], outputProductFilePath), productData[0] != null);
                 break;
             case 3:
                 if (orderData[0] == null) {
                     orderData[0] = processAndStoreOrderData(orderFilePath, outputOrderFilePath);
                 }
-                askToGenerateReport("order", () -> orderDataReport(orderData[0], outputOrderFilePath), orderData[0] != null);
+                askToGenerateReport(scanner,"order", () -> orderDataReport(orderData[0], outputOrderFilePath), orderData[0] != null);
                 break;
             case 4:
                 if (customerData[0] == null) {
                     customerData[0] = processAndStoreCustomerData(customerFilePath, outputCustomerFilePath);
                 }
-                askToGenerateReport("customer", () -> customerDataReport(customerData[0], outputCustomerFilePath), customerData[0] != null);
+                askToGenerateReport(scanner,"customer", () -> customerDataReport(customerData[0], outputCustomerFilePath), customerData[0] != null);
 
                 if (productData[0] == null) {
                     productData[0] = processAndStoreProductData(productFilePath, outputProductFilePath);
                 }
-                askToGenerateReport("product", () -> productDataReport(productData[0], outputProductFilePath), productData[0] != null);
+                askToGenerateReport(scanner,"product", () -> productDataReport(productData[0], outputProductFilePath), productData[0] != null);
 
                 if (orderData[0] == null) {
                     orderData[0] = processAndStoreOrderData(orderFilePath, outputOrderFilePath);
                 }
-                askToGenerateReport("order", () -> orderDataReport(orderData[0], outputOrderFilePath), orderData[0] != null);
+                askToGenerateReport(scanner,"order", () -> orderDataReport(orderData[0], outputOrderFilePath), orderData[0] != null);
                 break;
             case 5:
                 System.out.println("\nExiting Data Management Menu...");
@@ -242,13 +239,11 @@ private static void productDataReport(List<product> productData, String outputPr
 };
 
 
-private static void askToGenerateReport(String dataType, Runnable generateReportAction, boolean isDataAvailable) {
+private static void askToGenerateReport(Scanner scanner,String dataType, Runnable generateReportAction, boolean isDataAvailable) {
     if (!isDataAvailable) {
         System.out.println("\nNo data available to generate the report for " + dataType + ".");
         return;
     }
-
-    Scanner scanner = new Scanner(System.in);
     String choice;
     do {
         System.out.println("\nWould you like to generate a report for " + dataType + " data? (yes/no)");
